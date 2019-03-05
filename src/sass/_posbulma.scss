@@ -1,0 +1,44 @@
+//General Bulma variable modifies for GET website
+//Along with mixins useful for get page
+
+
+$danger: darken(#ffbe76,5%);
+$text: $grey-darker;
+$footer-background-color: $white;
+$subfooter-background-color: $white-ter;
+$footer-text-color: $grey-dark;
+$navbar-dropdown-arrow: darken($grey-light,30%);
+$navbar-item-color: darken($grey-light,30%);
+$navbar-item-hover-color: $black-ter;
+$navbar-item-active-color: $black-bis;
+$navbar-dropdown-item-hover-color: $black-bis;
+$navbar-dropdown-item-active-color: $black-bis;
+$navbar-dropdown-boxed-shadow: 0 4px 6px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+$content-blockquote-background-color: transparent;
+$content-blockquote-border-left: 0;
+$content-blockquote-padding: 5em 1.5em;
+$button-padding-horizontal: 2em;
+$tag-delete-margin: 10px;
+$button-padding-vertical: 10rem;
+$button-padding-horizontal: 3rem;
+$tag-background-color: darken($white-ter,5%);
+
+$navbar-height: 3.25rem;
+
+
+
+//import derived variables to desired color outcome
+@import "~bulma/sass/utilities/derived-variables.sass";
+@import "~bulma/sass/utilities/animations";
+@import "~bulma/sass/utilities/mixins";
+@import "~bulma/sass/utilities/controls";
+//Import the rest of Bulma
+@import "~bulma/sass/base/_all";
+@import "~bulma/sass/layout/_all";
+@import "~bulma/sass/grid/_all";
+@import "~bulma/sass/components/_all";
+@import "~bulma/sass/elements/_all";
+
+//Import bulma extensions
+@import '~bulma-divider/dist/css/bulma-divider.min.css';
+

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html {{ site.language_attributes }}  class="has-navbar-fixed-top">
+  <head>
+    <meta charset="{{ site.charset }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block extrahead %}{% endblock %}
+    {{function('wp_head')}}
+   
+  </head>
+  <body class="{{body_class}}" >
+    {# main content #}
+    {% block content %}
+    {% endblock %} 
+    {# Footer #}
+    
+    {{function('wp_footer')}}
+    <!--[if IE 9]>
+    <script src="https://raw.githubusercontent.com/jonathantneal/svg4everybody/master/dist/svg4everybody.min.js"></script>
+    <script>svg4everybody();</script>
+    <![endif]-->
+    
+    {% block extrajs %}{% endblock %}
+  </body>
+</html>

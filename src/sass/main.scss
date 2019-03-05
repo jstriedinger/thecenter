@@ -1,0 +1,352 @@
+@charset "utf-8";
+$button-padding-horizontal: 1.6rem;
+$button-padding-vertical: 1.6rem;
+$box-padding: 2rem;
+
+$blue: #1913ed;
+$yellow: #ffcd3c;
+$size-1: 4rem;
+$size-2: 3rem;
+
+@mixin customGap($val: 1.6)
+{
+	@include tablet{
+		@if $val == 6
+		{
+			$columnGap: 1.5rem;
+		}
+		@else{
+			$columnGap: 2rem;
+		}
+		
+		> .column {
+		    padding-left: if($val == 6, 1.5rem, 2rem);
+		    padding-right: if($val == 6, 1.5rem, 2rem);;
+		}
+		
+
+		&.is-multiline{
+			&.is-blog-page{
+				> .column:nth-child(n+4){
+					padding-bottom: if($val == 6, 1.5rem, 2rem);;
+			    	padding-top: if($val == 6, 1.5rem, 2rem);;
+				}
+			}
+			
+		}
+	}
+}
+@import "~bulma";
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
+
+@font-face {
+    font-family: 'Bebas Neue Bold';
+    src: url('../fonts/bebasneue-bold-webfont.woff2') format('woff2'),
+         url('../fonts/bebasneue-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Bebas Neue';
+    src: url('../fonts/bebasneue-regular-webfont.woff2') format('woff2'),
+         url('../fonts/bebasneue-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+.subtitle{
+	font-family: 'Open Sans','Bebas Neue', "serif";
+}
+.title{
+	font-family: 'Bebas Neue Bold', "serif";
+	span.big{
+		@include tablet{
+			font-size: 5rem;
+		}
+		@include widescreen {
+			font-size: 6rem;
+		}
+	}
+}
+.title, .subtitle{
+	&.is-blue, span.is-blue{
+		color: $blue;
+	}
+}
+
+.modal{
+	.modal-content{ 
+		overflow: visible;
+		&.has-video{
+			@include mobile{
+				position: relative;
+				padding-bottom: 56.25%;
+				padding-top: 30px; height: 0;
+
+				iframe,	object,	embed {
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+				}
+			}
+			min-height: 300px;
+			iframe{
+				height: 100%;
+			}
+		}
+	}
+	.modal-close{ 
+		background: $black-ter;
+		position: absolute;
+		box-shadow: 0 10px 40px 0 rgba(white,0.1), 0 2px 9px 0 rgba(white,0.06);
+		right: -16px;
+		top: -16px;
+		&:hover{
+			background: $grey-darker;
+		}
+		&.is-white{
+			background: $white-ter;
+			&:before,&:after{
+				background-color: $black-ter;
+			}
+			&:hover{
+				background: white;
+			}
+		}
+	}
+}
+
+.video-bg{
+	position: absolute;
+	top: 0;
+	left: 0;
+	min-width: 100%;
+	min-height: 100%;
+	z-index: -1 !important;
+	background-size: cover; 
+	.no-js &{
+		display: none;
+	}
+}
+
+
+.has-navbar-fixed-top{
+	padding-top: 0 !important;
+}
+
+.is-vcentered{
+	align-items: center;
+}
+
+body{
+	background: transparent;
+	position: relative;
+	line-height: 1.7;
+}
+
+section{
+	background: white;
+	&:nth-of-type(2){
+		@include tablet{
+			padding-top: 6rem;
+		}
+	}
+	&#lideres{
+		background: $blue;
+		.title, .subtitle, .content, p{
+			color: white;
+		}
+	}
+	&#home{
+		background: transparent;
+		position: relative;
+		.mask{
+			position: absolute;
+			top: 0;
+			left: 0;
+			background: rgba($blue, 0.6);
+			z-index: 1 !important;
+			width: 100%;
+			height: 100%;
+		}
+		*{
+			z-index: 2;
+		}
+		.wrapper{
+			position: relative;
+			
+
+			img{
+				max-width: 400px;
+			}
+			@include tablet{
+				width: 95%;
+				max-width: 1400px;
+				margin: 0 auto;
+				border: 1px solid $white-ter;
+				margin-bottom: -3.5rem
+			}
+			.title, .subtitle{
+				color: inherit;
+			}
+
+		}
+		.title, .subtitle, .icon{
+			color: white;
+		}
+	}
+}
+nav.navbar{
+	position: fixed;
+	z-index: 2;
+	top: 0;
+	width: 100%;
+	background: transparent;
+	border-bottom: 1px solid rgba(white,0.35);
+	@include tablet{
+
+	}
+	.navbar-menu{
+		background: transparent;
+		@include touch{
+			background: rgba(#1a2434, 0.3);
+			
+		}
+		@include tablet{
+			max-width: 1400px;
+			margin: 0 auto;
+		}
+	}
+	a.navbar-item, a.navbar-link{
+		color: white;
+		padding: 1.75rem 1.5rem;
+		font-weight: bold;
+		text-transform: uppercase;
+		transition: background-color 250ms linear;
+		&:hover, &:focus, &:active{
+			background: rgba(white, 0.3);
+
+		}
+	}
+	.navbar-burger{
+		color: white;
+	}
+}
+.wrapper{
+	width: 100%;
+	padding: 1rem 0.5rem;
+	&.white{
+		background: white;
+		&.border-top{
+			border-top: 1px solid $white-ter;
+		}
+	}
+	&.clients{
+		img{
+			filter: grayscale(100%);
+		}
+	}
+}
+
+.button{
+	font-family: "Bebas Neue Bold","Bebas Neue";
+	border-radius: 0 !important;
+	text-transform: uppercase;
+	font-size: 1.2rem;
+
+	&.alt{
+		background: transparent;
+		border: none;
+		box-shadow: none;
+		color: $yellow;
+		padding-left: 0.6rem;
+		.icon{
+			border: 2px solid $yellow;
+			border-radius: 100%;
+			padding: 1.5rem;
+			margin-right: 0.5rem !important;
+			color: $yellow;
+		}
+	}
+}
+.card{
+	&.goalcard{
+		padding-top: 20rem;
+		border: 1px solid $white-ter;
+		border-radius: 0;
+		box-shadow: none;
+		position: relative;
+		
+
+		.media{
+			display: block;
+			.media-left,.media-content{ display: block; color: white;}
+			img{ max-width: 70%; margin: 0 auto; display: block; }
+			@include desktop{
+				display: flex;
+				align-items: center;
+				.media-left{
+					max-width: 40%;
+					img{
+						max-width: 100%;
+					}
+				}
+
+			}
+		}
+		&.bogotacup, &.ligaf7, &.torneof7, &.esliga{
+			background: url("../img/home.jpg") center center;
+			background-size: auto 100%;
+
+		}
+		.mask{
+			position: absolute;
+			top: 0;
+			left: 0;
+			background: linear-gradient(to bottom, transparent, rgba(#1a2434, 1));;
+			z-index: 1 !important;
+			width: 100%;
+			height: 100%;
+		}
+		*{
+			z-index: 2;
+		}
+	}
+}
+.columns{
+	&.is-variable-in-desktop
+	{
+		.columns{
+			margin: 0;
+		}
+		&.is-6
+		{
+			@include customGap(6);
+		}
+		&.is-8{
+			@include customGap(8);
+		}
+	}
+	&.reversed{
+		@include desktop{
+			flex-direction: row-reverse;
+		}
+	}
+	.column{
+		&.extraup{
+			@include tablet {
+				padding-top: 0
+			}
+		}
+	}
+}
+.tag{
+	font-family: "Bebas Neue Bold"
+}
+iframe{
+	height: 100%;
+}

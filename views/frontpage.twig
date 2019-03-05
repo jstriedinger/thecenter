@@ -1,0 +1,206 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item">
+        nuestra empresa
+      </a>
+
+      <a class="navbar-item">
+        Competencias
+      </a>
+      <a class="navbar-item">
+        giras deportivas
+      </a>
+      <a class="navbar-item">
+        Marketing
+      </a>
+      <a class="navbar-item">
+        nuestros clientes
+      </a>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a class="button is-primary">
+            <strong>contactanos</strong>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="modal is-small" id="videomodal">
+  <div class="modal-background"></div>
+  <div class="modal-content has-video has-text-centered">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/dCY-pR8BTbs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen autoplay="1"></iframe>
+    <button class="modal-close is-large close-button" data-modal="videomodal" aria-label="close"></button>
+  </div>
+</div>
+<section class="hero is-medium" id="home">
+  <video autoplay loop  id="homevid" class="video-bg">
+      <source src="{{ theme.link }}/dist/video/home.mp4" type="video/mp4">
+  </video>
+
+  <div class="mask"></div>
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns has-text-centered is-multiline">
+        <div class="column is-full">
+          <h1 class="title is-1">
+            <small>aprende</small><br>
+            <span class="big">liderazgo, innnovación y más</span>
+          </h1>
+          
+        </div>
+        <div class="column is-full">
+          <a href="" id="playvideo">
+            <i class="icon is-large">
+              <span class="far fa-play-circle fa-5x"></span>
+            </i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrapper white bordered">
+      <div class="container">
+        <div class="columns is-vcentered is-multiline">
+          <div class="column is-narrow">
+            <h5 class="title is-6 is-capitalized">nuestros clientes</h5>
+          </div>
+          <div class="column has-text-centered">
+            <img src="{{theme.link}}/dist/img/gobernacion.jpg" alt="peple plays">
+          </div>
+        </div>
+      </div>
+  </div>
+</section>
+<section class="section" id="main">
+  <div class="container">
+    <div class="columns is-variable-in-desktop is-8 is-multiline has-text-centered">
+      <div class="column is-one-third">
+        <div class="is-divider" data-content="OR"></div>
+        <hr>
+      </div>
+      <div class="column is-one-third">
+        <h2 class="title is-2">¿por qué estudiar en</h2>
+      </div>
+      <div class="column is-one-third">
+        <hr>
+      </div>
+      <div class="column is-full extraup">
+        <h2 class="title is-size-2 is-size-1-widescreen is-blue">the center for competitiveness and innovation</h2>
+      </div>
+    </div>
+    <br><br>
+    <div class="columns is-vcentered is-multiline is-variable-in-desktop is-8">
+      <div class="column is-full">
+        <div class="columns">
+          <div class="column is-narrow">
+            <img src="https://via.placeholder.com/250" alt="">
+          </div>
+          <div class="column">
+            <h3 class="title is-2">justificación 1</h3>
+            <p class="content is-medium">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui, expedita, molestias. Velit facilis distinctio harum ad minima quaerat ex odit, sunt iste assumenda molestiae quod accusamus numquam veritatis unde voluptates.</p>
+            <a href="" class="button alt">
+              <i class="icon is-medium">
+                <i class="fas fa-chevron-right fa-lg"></i>
+              </i>
+              <span>más información</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="column is-full">
+        <div class="columns reversed">
+          <div class="column is-narrow">
+            <img src="https://via.placeholder.com/250" alt="">
+          </div>
+          <div class="column has-text-right-desktop">
+            <h3 class="title is-2">justificación 2</h3>
+            <p class="content is-medium">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui, expedita, molestias. Velit facilis distinctio harum ad minima quaerat ex odit, sunt iste assumenda molestiae quod accusamus numquam veritatis unde voluptates.</p>
+            <a href="" class="button alt">
+              <i class="icon is-medium">
+                <i class="fas fa-chevron-right fa-lg"></i>
+              </i>
+              <span>más información</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="column is-full">
+        <div class="columns">
+          <div class="column is-narrow">
+            <img src="https://via.placeholder.com/250" alt="">
+          </div>
+          <div class="column">
+            <h3 class="title is-2">justificación 3</h3>
+            <p class="content is-medium">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui, expedita, molestias. Velit facilis distinctio harum ad minima quaerat ex odit, sunt iste assumenda molestiae quod accusamus numquam veritatis unde voluptates.</p>
+            <a href="" class="button alt">
+              <i class="icon is-medium">
+                <i class="fas fa-chevron-right fa-lg"></i>
+              </i>
+              <span>más información</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="column is-full">
+        <div class="columns reversed">
+          <div class="column is-narrow">
+            <img src="https://via.placeholder.com/250" alt="">
+          </div>
+          <div class="column has-text-right-desktop">
+            <h3 class="title is-2">justificación 4</h3>
+            <p class="content is-medium">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui, expedita, molestias. Velit facilis distinctio harum ad minima quaerat ex odit, sunt iste assumenda molestiae quod accusamus numquam veritatis unde voluptates.</p>
+            <a href="" class="button alt">
+              <i class="icon is-medium">
+                <i class="fas fa-chevron-right fa-lg"></i>
+              </i>
+              <span>más información</span>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+</section>
+<section class="section" id="lideres">
+  <div class="container">
+    <div class="columns is-variable-in-desktop is-8">
+      <div class="column is-half">
+
+        <div class="tag is-large">
+          programa
+        </div>
+        <h3 class="subtitle is-size-3 is-size-2-fullhd">Creando empresas ÚNICAS y líderes INNOVADORES</h3>
+        <p class="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum dolor vero numquam repellendus, eos minima, sequi pariatur nisi, officia magni quos voluptatum eligendi! Maxime asperiores alias iusto aliquid, eaque voluptate.</p>
+        <a href="#" class="button alt">
+          <i class="icon is-medium">
+                <i class="fas fa-chevron-right fa-lg"></i>
+              </i>
+              <span>más información</span>
+        </a>
+      </div>
+      <div class="column is-half">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/dCY-pR8BTbs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
