@@ -16,8 +16,9 @@ $context = Timber::get_context();
 $context['posts'] = new Timber\PostQuery();
 $context['post'] = new Timber\Post();
 $context["categories"] = get_categories();
-$templates = array( 'frontpage.twig' );
+if ( is_front_page() ) {
+	$templates = array( 'frontpage.twig' );
+}
 
-$context['title'] = "Categorías";
 
 Timber::render( $templates, $context );

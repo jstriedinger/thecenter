@@ -65,6 +65,18 @@ if (function_exists('add_theme_support'))
 
 add_filter( 'timber/context', 'add_to_context' );
 
+//use mailtrap for development
+function mailtrap($phpmailer) {
+  $phpmailer->isSMTP();
+  $phpmailer->Host = 'smtp.mailtrap.io';
+  $phpmailer->SMTPAuth = true;
+  $phpmailer->Port = 2525;
+  $phpmailer->Username = '541566cbb17403f14';
+  $phpmailer->Password = 'd9a4f5250f346e';
+}
+
+add_action('phpmailer_init', 'mailtrap');
+
 function add_to_context( $context ) {
     global $post;
     // So here you are adding data to Timber's context object, i.e...

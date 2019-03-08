@@ -1,7 +1,4 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
-section.section {
-  padding: 5rem 1.5rem; }
-
 /*! bulma.io v0.7.4 | MIT License | github.com/jgthms/bulma */
 @-webkit-keyframes spinAround {
   from {
@@ -1165,7 +1162,7 @@ a.has-text-danger:hover, a.has-text-danger:focus {
 .box {
   background-color: white;
   border-radius: 6px;
-  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+  box-shadow: none;
   color: #4a4a4a;
   display: block;
   padding: 2rem; }
@@ -1183,10 +1180,10 @@ a.box:active {
   color: #363636;
   cursor: pointer;
   justify-content: center;
-  padding-bottom: 1.6rem;
-  padding-left: 1.6rem;
-  padding-right: 1.6rem;
-  padding-top: 1.6rem;
+  padding-bottom: 1.2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 1.2rem;
   text-align: center;
   white-space: nowrap; }
   .button strong {
@@ -6972,6 +6969,14 @@ label.panel-block {
   background-color: #fafafa;
   padding: 3rem 1.5rem 6rem; }
 
+@media screen and (min-width: 769px), print {
+  section.section {
+    padding: 5rem 1.5rem; } }
+
+@media screen and (min-width: 769px), print {
+  section.section#lideres {
+    padding: 7rem 1.5rem; } }
+
 @font-face {
   font-family: 'Bebas Neue Bold';
   src: url("../fonts/bebasneue-bold-webfont.woff2") format("woff2"), url("../fonts/bebasneue-bold-webfont.woff") format("woff");
@@ -7061,7 +7066,7 @@ section {
     section:nth-of-type(2) {
       padding-top: 6rem; } }
   section#lideres {
-    background: #1913ed; }
+    background: linear-gradient(120deg, #396afc, #1913ed); }
     section#lideres .title, section#lideres .subtitle, section#lideres .content, section#lideres p {
       color: white; }
   section#home {
@@ -7075,12 +7080,14 @@ section {
       z-index: 1 !important;
       width: 100%;
       height: 100%; }
+    section#home.no-video {
+      background: #1913ed; }
     section#home * {
       z-index: 2; }
     section#home .wrapper {
       position: relative; }
       section#home .wrapper img {
-        max-width: 400px; }
+        max-height: 80px; }
       @media screen and (min-width: 769px), print {
         section#home .wrapper {
           width: 95%;
@@ -7094,8 +7101,8 @@ section {
       color: white; }
 
 nav.navbar {
-  position: fixed;
-  z-index: 2;
+  position: absolute;
+  z-index: 9 !important;
   top: 0;
   width: 100%;
   background: transparent;
@@ -7131,11 +7138,16 @@ nav.navbar {
     -webkit-filter: grayscale(100%);
             filter: grayscale(100%); }
 
+.box {
+  border-radius: 0;
+  border: 1px solid #b5b5b5; }
+
 .button {
   font-family: "Bebas Neue Bold","Bebas Neue";
   border-radius: 0 !important;
   text-transform: uppercase;
-  font-size: 1.2rem; }
+  font-size: 1.2rem;
+  height: auto; }
   .button.alt {
     background: transparent;
     border: none;
@@ -7148,6 +7160,9 @@ nav.navbar {
       padding: 1.5rem;
       margin-right: 0.5rem !important;
       color: #ffcd3c; }
+  .button.alt-font {
+    font-family: "Open Sans";
+    text-transform: none; }
 
 .card.goalcard {
   padding-top: 20rem;
@@ -7215,4 +7230,10 @@ nav.navbar {
 
 .tag {
   font-family: "Bebas Neue Bold"; }
+
+.wpforms-field {
+  display: block; }
+
+.wpforms-form button.is-primary {
+  background: #00d1b2 !important; }
 
