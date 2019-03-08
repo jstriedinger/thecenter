@@ -1,4 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+section.section {
+  padding: 5rem 1.5rem; }
+
 /*! bulma.io v0.7.4 | MIT License | github.com/jgthms/bulma */
 @-webkit-keyframes spinAround {
   from {
@@ -267,7 +270,6 @@ embed,
 iframe,
 object,
 video {
-  height: auto;
   max-width: 100%; }
 
 audio {
@@ -7213,7 +7215,4 @@ nav.navbar {
 
 .tag {
   font-family: "Bebas Neue Bold"; }
-
-iframe {
-  height: 100%; }
 

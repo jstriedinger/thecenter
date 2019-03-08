@@ -8,6 +8,11 @@ $yellow: #ffcd3c;
 $size-1: 4rem;
 $size-2: 3rem;
 
+section.section{
+	@include touch {
+		padding: 5rem 1.5rem;
+	}
+}
 @mixin customGap($val: 1.6)
 {
 	@include tablet{
@@ -346,7 +351,4 @@ nav.navbar{
 }
 .tag{
 	font-family: "Bebas Neue Bold"
-}
-iframe{
-	height: 100%;
 }

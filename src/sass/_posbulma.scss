@@ -24,8 +24,7 @@ $button-padding-horizontal: 3rem;
 $tag-background-color: darken($white-ter,5%);
 
 $navbar-height: 3.25rem;
-
-
+$section-padding: 4rem 1.5rem;
 
 //import derived variables to desired color outcome
 @import "~bulma/sass/utilities/derived-variables.sass";
