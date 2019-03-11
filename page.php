@@ -18,6 +18,13 @@ $context['post'] = new Timber\Post();
 $context["categories"] = get_categories();
 if ( is_front_page() ) {
 	$templates = array( 'frontpage.twig' );
+	//find all events
+	$args = array (
+	    'post_type'              => 'page',
+	    'posts_per_page' => '1'
+	);
+	$args['meta_query'] =  array(array('key' => '_wp_page_template','compare' => '==','value' => 'templates/lideres.php'));
+	$context['programa'] = Timber::get_posts( $args )[0];
 }
 
 

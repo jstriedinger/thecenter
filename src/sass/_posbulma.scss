@@ -7,21 +7,7 @@ $text: $grey-darker;
 $footer-background-color: $white;
 $subfooter-background-color: $white-ter;
 $footer-text-color: $grey-dark;
-$navbar-dropdown-arrow: darken($grey-light,30%);
-$navbar-item-color: darken($grey-light,30%);
-$navbar-item-hover-color: $black-ter;
-$navbar-item-active-color: $black-bis;
-$navbar-dropdown-item-hover-color: $black-bis;
-$navbar-dropdown-item-active-color: $black-bis;
-$navbar-dropdown-boxed-shadow: 0 4px 6px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
-$content-blockquote-background-color: transparent;
-$content-blockquote-border-left: 0;
-$content-blockquote-padding: 5em 1.5em;
-$button-padding-horizontal: 2em;
 $tag-delete-margin: 10px;
-$button-padding-vertical: 10rem;
-$button-padding-horizontal: 3rem;
-$tag-background-color: darken($white-ter,5%);
 
 $navbar-height: 3.25rem;
 $section-padding: 4rem 1.5rem;
@@ -38,6 +24,4 @@ $section-padding: 4rem 1.5rem;
 @import "~bulma/sass/components/_all";
 @import "~bulma/sass/elements/_all";
 
-//Import bulma extensions
-@import '~bulma-divider/dist/css/bulma-divider.min.css';
 

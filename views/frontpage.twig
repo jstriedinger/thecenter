@@ -58,20 +58,18 @@
       </div>
   </div>
 </section>
+{% include 'snippets/testimonies.twig' %}
 <section class="section" id="main">
   <div class="container">
     <div class="columns is-variable-in-desktop is-8 is-multiline has-text-centered">
-      <div class="column is-one-third">
+      <div class="column">
         <hr>
       </div>
-      <div class="column is-one-third">
-        <h2 class="title is-2">por qué</h2>
+      <div class="column is-narrow">
+        <h2 class="title is-2">{{post.get_field("justification_title")}}</h2>
       </div>
-      <div class="column is-one-third">
+      <div class="column">
         <hr>
-      </div>
-      <div class="column is-full extraup">
-        <h2 class="title is-size-2 is-size-1-widescreen is-blue">the center for competitiveness and innovation</h2>
       </div>
     </div>
     <br><br>
@@ -98,19 +96,7 @@
     </div>
   </div>
 </section>
-<section class="section">
-  <div class="container">
-    <div class="columns is-variable in-desktop is-8 is-vcentered">
-      <div class="column is-half">
-        <h3 class="title is-2"><small>lo que dicen</small><br><span class="is-blue">nuestros participantes</span></h3>
-      </div>
-      <div class="column is-half">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/dCY-pR8BTbs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          
-      </div>
-    </div>
-  </div>
-</section>
+
 <section class="section">
   <div class="container">
     <div class="columns is-variable is-vcentered is-multiline">
@@ -127,14 +113,14 @@
 </section>
 <section class="section" id="lideres">
   <div class="container">
-    <div class="columns is-variable-in-desktop is-8">
+    <div class="columns is-variable-in-desktop is-8 is-vcentered">
       <div class="column is-half">
         <div class="tag is-large">
           programa
         </div>
-        <h3 class="subtitle is-size-3 is-size-2-fullhd">Creando empresas ÚNICAS y líderes INNOVADORES</h3>
-        <p class="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum dolor vero numquam repellendus, eos minima, sequi pariatur nisi, officia magni quos voluptatum eligendi! Maxime asperiores alias iusto aliquid, eaque voluptate.</p>
-        <a href="#" class="button alt">
+        <h3 class="subtitle is-size-3 is-size-2-fullhd">{{programa.title}}</h3>
+        <p class="content">{{programa.desc}}</p>
+        <a href="{{programa.link}}" class="button alt">
           <i class="icon is-medium">
                 <i class="fas fa-chevron-right fa-lg"></i>
               </i>
@@ -142,7 +128,7 @@
         </a>
       </div>
       <div class="column is-half">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/dCY-pR8BTbs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="{{programa.video_home}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </div>
   </div>

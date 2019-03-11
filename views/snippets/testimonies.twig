@@ -1,0 +1,26 @@
+<section class="section" id="testimonies">
+  <div class="container">
+    <div class="columns is-variable in-desktop is-8 is-vcentered">
+      <div class="column is-half">
+        <h3 class="title is-2"><small>lo que dicen</small><br><span class="is-blue">nuestros participantes</span></h3>
+      </div>
+      <div class="column is-half">
+        <iframe width="560" height="315" src="{{post.get_field('testimonies').main}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="columns has-text-centered is-multiline is-variable in-desktop is-8">
+      <div class="column is-full">
+        <h2 class="title is-3">otros <span class="is-blue">testimonios</span></h2>
+      </div>
+      {% for testi in post.get_field('testimonies').extra %}
+      <div class="column {{post.get_field('testimonies').extra|length < 3 ? 'is-half' : 'is-one-third'}}">
+        <h3 class="subtitle is-5 is-capitalized">{{testi.title}}</h3>
+        <iframe width="560" height="315" src="{{testi.video}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
