@@ -53,6 +53,13 @@ $(document).ready(function() {
         event.preventDefault();
         console.log("closing")
         let modal = $(this).data("modal");
-        toggleModal("videomodal",false)
+        toggleModal(modal,false)
     })
+
+  $(".button.opener").click(function(e){
+    e.preventDefault()
+    console.log("open")
+    let modal = $(this).data("modal");
+    toggleModal(modal)
+  })
 });

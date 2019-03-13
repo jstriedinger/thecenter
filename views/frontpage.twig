@@ -8,64 +8,15 @@
     <button class="modal-close is-large close-button" data-modal="videomodal" aria-label="close"></button>
   </div>
 </div>
-<section class="hero is-medium" id="home">
-    {% include 'snippets/nav.twig' %}
-  <video autoplay loop  id="homevid" class="video-bg">
-      <source src="{{ theme.link }}/dist/video/home.mp4" type="video/mp4">
-  </video>
-
-  <div class="mask"></div>
-  <div class="hero-body">
-    <div class="container">
-      <div class="columns has-text-centered is-multiline">
-        <div class="column is-full">
-          <h1 class="title is-1">
-            <small>aprende</small><br>
-            <span class="big">liderazgo, innnovación y más</span>
-          </h1>
-          
-        </div>
-        <div class="column is-full">
-          <a href="" id="playvideo">
-            <i class="icon is-large">
-              <span class="far fa-play-circle fa-5x"></span>
-            </i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="wrapper white bordered">
-      <div class="container">
-        <div class="columns is-vcentered is-multiline">
-          <div class="column is-narrow">
-            <h5 class="title is-4 is-capitalized">hemos trabajado con</h5>
-          </div>
-          <div class="column has-text-centered">
-            <img src="{{theme.link}}/dist/img/gobernacion.jpg" alt="peple plays">
-          </div>
-          <div class="column has-text-centered">
-            <img src="{{theme.link}}/dist/img/rcn.jpg" alt="peple plays">
-          </div>
-          <div class="column has-text-centered">
-            <img src="{{theme.link}}/dist/img/autonoma.jpg" alt="peple plays">
-          </div>
-          <div class="column has-text-centered">
-            <img src="{{theme.link}}/dist/img/uninorte.jpg" alt="peple plays">
-          </div>
-        </div>
-      </div>
-  </div>
-</section>
 {% include 'snippets/testimonies.twig' %}
 <section class="section" id="main">
+  {% include 'snippets/nav.twig' %}
   <div class="container">
     <div class="columns is-variable-in-desktop is-8 is-multiline has-text-centered">
       <div class="column">
         <hr>
       </div>
-      <div class="column is-narrow">
+      <div class="column is-half">
         <h2 class="title is-2">{{post.get_field("justification_title")}}</h2>
       </div>
       <div class="column">
@@ -73,22 +24,55 @@
       </div>
     </div>
     <br><br>
-    <div class="columns is-vcentered is-multiline is-variable-in-desktop is-8">
+    <div class="columns is-multiline">
       {% for justi in post.get_field("justifications") %}
-      <div class="column is-full">
-        <div class="columns is-vcentered {{ loop.index % 2 == 0 ? 'reversed' : '' }}">
-          <div class="column">
-            <img src="{{justi.img}}" alt="">
+      {% if justi.sub is not empty %}
+      <div class="modal" id="justi_{{loop.index}}_modal">
+
+        <div class="modal-background"></div>
+        <div class="modal-card">
+          <div class="modal-card-body">
+            <div class="columns is-variable in-desktop is-6">
+              {% for subi in justi.sub %}
+              <div class="column">
+                <h4 class="title is-3">{{subi.title}}</h4>
+                <a href="{{subi.page}}" class="button alt">
+                  <i class="icon is-medium">
+                    <i class="fas fa-chevron-right fa-lg"></i>
+                  </i>
+                  <span>más información</span>
+                </a>
+              </div>
+              {% endfor %}
+            </div>
           </div>
-          <div class="column is-two-thirds {{ loop.index % 2 == 0 ? 'has-text-right-desktop' : '' }}">
-            <h3 class="title is-3 is-blue">{{justi.title}}</h3>
-            <p class="content is-medium">{{justi.desc}}</p>
-            <a href="{{justi.page}}" class="button alt">
+          <button class="modal-close is-large close-button" data-modal="justi_{{loop.index}}_modal" aria-label="close"></button>
+        </div>
+      </div>
+      {% endif %}
+      <div class="column is-one-third">
+        <div class="card" id="justi_{{loop.index}}">
+          {% if justi.img is not empty %}
+          <div class="card-image">
+            <figure class="image">
+              <img src="{{justi.img}}" alt="Placeholder image">
+            </figure>
+          </div>
+          {% endif %}
+          <div class="card-content">
+            <h4 class="title is-3">{{justi.title}}</h4>
+            {% if justi.desc is not empty %}
+            <div class="content is-small">
+              {{justi.desc}}
+            </div>
+            {% endif %}
+            <a href="{{justi.page}}" class="button alt {{ justi.sub is not empty ? 'opener' : ''}}" {{ justi.sub is not empty ? 'data-modal="justi_' ~ loop.index ~ '_modal" ' : ''}}>
               <i class="icon is-medium">
                 <i class="fas fa-chevron-right fa-lg"></i>
               </i>
               <span>más información</span>
             </a>
+            {{ justi.sub }}
           </div>
         </div>
       </div>
@@ -99,18 +83,35 @@
 
 <section class="section">
   <div class="container">
-    <div class="columns is-variable is-vcentered is-multiline">
-      <div class="column is-two-fifths">
-        <h3 class="title is-1 is-blue">aliados</h3>
-        <h5 class="subtitle is-5">A traves de los años hemos tenido la oportunidad de trabajar con increibles aliados estrategicos y universidades</h5>
+    <div class="columns is-variable in-desktop is-multiline">
+
+      <div class="column is-two-thirds">
+        <h3 class="title is-1 is-blue">nuestra institución</h3>
+        <h5 class="subtitle is-5">A traves de los años hemos tenido la oportunidad de trabajar con increibles aliados estrategicos y universidades. Mira más de nuestra institución</h5>
+        <a href="#" class="button alt is-large" >
+          <i class="icon is-medium">
+            <i class="fas fa-chevron-right fa-lg"></i>
+          </i>
+          <span>más información</span>
+        </a>
+        
       </div>
-       <div class="column">
+      <div class="column has-text-centered">
+        <img src="{{theme.link}}/dist/img/logo.png" alt="">
+      </div>
+    </div>
+    <div class="columns is-vcentered">
+      <div class="column">
         <img src="{{theme.link}}/dist/img/aliados1.jpg" alt="">
+        
+      </div>
+      <div class="column">
         <img src="{{theme.link}}/dist/img/aliados2.jpg" alt="">
       </div>
     </div>
   </div>
 </section>
+{#
 <section class="section" id="lideres">
   <div class="container">
     <div class="columns is-variable-in-desktop is-8 is-vcentered">
@@ -143,7 +144,7 @@
           <span class="icon">
             <i class="far fa-envelope"></i>
           </span>
-          <span>manuelmariamarquez@thecenterforcompetitiveness.org</span>
+          <span>Info@thecenterforcompetitiveness.org</span>
         </a>
       </div>
       <div class="column is-half">
@@ -158,7 +159,7 @@
       </div>
     </div>
   </div>
-</section>
+</section>#}
 <section class="section" id="contact">
   <div class="container">
     <div class="columns is-centered is-multiline has-text-centered">
@@ -176,21 +177,21 @@
           <span class="icon">
             <i class="far fa-envelope"></i>
           </span>
-          <span>manuelmariamarquez@thecenterforcompetitiveness.org</span>
+          <span>Info@thecenterforcompetitiveness.org  </span>
         </a>
         <br>
         <a class="button alt alt-font">
           <span class="icon">
             <i class="fas fa-phone"></i>
           </span>
-          <span>+57 38282828</span>
+          <span>+575 3785097</span>
         </a>
         <br>
         <a class="button alt alt-font">
           <span class="icon">
             <i class="fas fa-home"></i>
           </span>
-          <span>Direccion</span>
+          <span>Calle 86 No. 50-130</span>
         </a>
       </div>
     </div>

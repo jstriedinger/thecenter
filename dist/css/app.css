@@ -6969,12 +6969,344 @@ a.tag:hover {
   vertical-align: top; }
 
 @media screen and (min-width: 769px), print {
+  section.section:first-of-type {
+    padding-top: 9rem; } }
+
+@media screen and (min-width: 769px), print {
   section.section {
     padding: 5rem 1.5rem; } }
 
 @media screen and (min-width: 769px), print {
   section.section#lideres {
     padding: 7rem 1.5rem; } }
+
+.has-tiny-margin-top {
+  margin-top: 0.4rem; }
+  .has-tiny-margin-top.in-mobile {
+    margin-top: 0.8rem; }
+  @media screen and (min-width: 1088px) {
+    .has-tiny-margin-top:not(.in-mobile) {
+      margin-top: 0.8rem; } }
+  @media screen and (min-width: 1088px) {
+    .has-tiny-margin-top.only-mobile {
+      margin-top: initial; } }
+  .has-tiny-margin-top.from-tablet {
+    margin-top: initial; }
+    @media screen and (min-width: 769px), print {
+      .has-tiny-margin-top.from-tablet {
+        margin-top: 0.8rem; } }
+
+.has-tiny-padding-top {
+  padding-top: 0.4rem; }
+  @media screen and (min-width: 1088px) {
+    .has-tiny-padding-top {
+      padding-top: 0.8rem; } }
+  @media screen and (min-width: 1088px) {
+    .has-tiny-padding-top.only-mobile {
+      padding-top: initial; } }
+  .has-tiny-padding-top.from-tablet {
+    padding-top: initial; }
+    @media screen and (min-width: 769px), print {
+      .has-tiny-padding-top.from-tablet {
+        padding-top: 0.8rem; } }
+
+.has-tiny-margin-bottom {
+  margin-bottom: 0.4rem; }
+  .has-tiny-margin-bottom.in-mobile {
+    margin-bottom: 0.8rem; }
+  @media screen and (min-width: 1088px) {
+    .has-tiny-margin-bottom:not(.in-mobile) {
+      margin-bottom: 0.8rem; } }
+  @media screen and (min-width: 1088px) {
+    .has-tiny-margin-bottom.only-mobile {
+      margin-bottom: initial; } }
+  .has-tiny-margin-bottom.from-tablet {
+    margin-bottom: initial; }
+    @media screen and (min-width: 769px), print {
+      .has-tiny-margin-bottom.from-tablet {
+        margin-bottom: 0.8rem; } }
+  .has-tiny-margin-bottom.not-on-last-child:last-child {
+    margin-bottom: inherit; }
+
+.has-tiny-padding-bottom {
+  padding-bottom: 0.4rem; }
+  @media screen and (min-width: 1088px) {
+    .has-tiny-padding-bottom {
+      padding-bottom: 0.8rem; } }
+  @media screen and (min-width: 1088px) {
+    .has-tiny-padding-bottom.only-mobile {
+      padding-bottom: initial; } }
+  .has-tiny-padding-bottom.from-tablet {
+    padding-bottom: initial; }
+    @media screen and (min-width: 769px), print {
+      .has-tiny-padding-bottom.from-tablet {
+        padding-bottom: 0.8rem; } }
+  .has-tiny-padding-bottom.not-on-last-child:last-child {
+    padding-bottom: inherit; }
+
+.has-small-margin-top {
+  margin-top: 1rem; }
+  .has-small-margin-top.in-mobile {
+    margin-top: 2rem; }
+  @media screen and (min-width: 1088px) {
+    .has-small-margin-top:not(.in-mobile) {
+      margin-top: 2rem; } }
+  @media screen and (min-width: 1088px) {
+    .has-small-margin-top.only-mobile {
+      margin-top: initial; } }
+  .has-small-margin-top.from-tablet {
+    margin-top: initial; }
+    @media screen and (min-width: 769px), print {
+      .has-small-margin-top.from-tablet {
+        margin-top: 2rem; } }
+
+.has-small-padding-top {
+  padding-top: 1rem; }
+  .has-small-padding-top.section {
+    padding-top: 2rem; }
+  @media screen and (min-width: 1088px) {
+    .has-small-padding-top {
+      padding-top: 2rem; } }
+  @media screen and (min-width: 1088px) {
+    .has-small-padding-top.only-mobile {
+      padding-top: initial; } }
+  .has-small-padding-top.from-tablet {
+    padding-top: initial; }
+    @media screen and (min-width: 769px), print {
+      .has-small-padding-top.from-tablet {
+        padding-top: 2rem; } }
+
+.has-small-margin-bottom {
+  margin-bottom: 1rem; }
+  .has-small-margin-bottom.in-mobile {
+    margin-bottom: 2rem; }
+  @media screen and (min-width: 1088px) {
+    .has-small-margin-bottom:not(.in-mobile) {
+      margin-bottom: 2rem; } }
+  @media screen and (min-width: 1088px) {
+    .has-small-margin-bottom.only-mobile {
+      margin-bottom: initial; } }
+  .has-small-margin-bottom.from-tablet {
+    margin-bottom: initial; }
+    @media screen and (min-width: 769px), print {
+      .has-small-margin-bottom.from-tablet {
+        margin-bottom: 2rem; } }
+  .has-small-margin-bottom.not-on-last-child:last-child {
+    margin-bottom: inherit; }
+
+.has-small-padding-bottom {
+  padding-bottom: 1rem; }
+  .has-small-padding-bottom.section {
+    padding-bottom: 2rem; }
+  @media screen and (min-width: 1088px) {
+    .has-small-padding-bottom {
+      padding-bottom: 2rem; } }
+  @media screen and (min-width: 1088px) {
+    .has-small-padding-bottom.only-mobile {
+      padding-bottom: initial; } }
+  .has-small-padding-bottom.from-tablet {
+    padding-bottom: initial; }
+    @media screen and (min-width: 769px), print {
+      .has-small-padding-bottom.from-tablet {
+        padding-bottom: 2rem; } }
+  .has-small-padding-bottom.not-on-last-child:last-child {
+    padding-bottom: inherit; }
+
+.has-medium-margin-top {
+  margin-top: 2rem; }
+  .has-medium-margin-top.in-mobile {
+    margin-top: 4rem; }
+  @media screen and (min-width: 1088px) {
+    .has-medium-margin-top:not(.in-mobile) {
+      margin-top: 4rem; } }
+  @media screen and (min-width: 1088px) {
+    .has-medium-margin-top.only-mobile {
+      margin-top: initial; } }
+  .has-medium-margin-top.from-tablet {
+    margin-top: initial; }
+    @media screen and (min-width: 769px), print {
+      .has-medium-margin-top.from-tablet {
+        margin-top: 4rem; } }
+
+.has-medium-padding-top {
+  padding-top: 2rem; }
+  .has-medium-padding-top.section {
+    padding-top: 4rem; }
+  @media screen and (min-width: 1088px) {
+    .has-medium-padding-top {
+      padding-top: 4rem; } }
+  @media screen and (min-width: 1088px) {
+    .has-medium-padding-top.only-mobile {
+      padding-top: initial; } }
+  .has-medium-padding-top.from-tablet {
+    padding-top: initial; }
+    @media screen and (min-width: 769px), print {
+      .has-medium-padding-top.from-tablet {
+        padding-top: 4rem; } }
+
+.has-medium-margin-bottom {
+  margin-bottom: 2rem; }
+  .has-medium-margin-bottom.in-mobile {
+    margin-bottom: 4rem; }
+  @media screen and (min-width: 1088px) {
+    .has-medium-margin-bottom:not(.in-mobile) {
+      margin-bottom: 4rem; } }
+  @media screen and (min-width: 1088px) {
+    .has-medium-margin-bottom.only-mobile {
+      margin-bottom: initial; } }
+  .has-medium-margin-bottom.from-tablet {
+    margin-bottom: initial; }
+    @media screen and (min-width: 769px), print {
+      .has-medium-margin-bottom.from-tablet {
+        margin-bottom: 4rem; } }
+  .has-medium-margin-bottom.not-on-last-child:last-child {
+    margin-bottom: inherit; }
+
+.has-medium-padding-bottom {
+  padding-bottom: 2rem; }
+  .has-medium-padding-bottom.section {
+    padding-bottom: 4rem; }
+  @media screen and (min-width: 1088px) {
+    .has-medium-padding-bottom {
+      padding-bottom: 4rem; } }
+  @media screen and (min-width: 1088px) {
+    .has-medium-padding-bottom.only-mobile {
+      padding-bottom: initial; } }
+  .has-medium-padding-bottom.from-tablet {
+    padding-bottom: initial; }
+    @media screen and (min-width: 769px), print {
+      .has-medium-padding-bottom.from-tablet {
+        padding-bottom: 4rem; } }
+  .has-medium-padding-bottom.not-on-last-child:last-child {
+    padding-bottom: inherit; }
+
+.has-big-margin-top {
+  margin-top: 3.5rem; }
+  .has-big-margin-top.in-mobile {
+    margin-top: 7rem; }
+  @media screen and (min-width: 1088px) {
+    .has-big-margin-top:not(.in-mobile) {
+      margin-top: 7rem; } }
+  @media screen and (min-width: 1088px) {
+    .has-big-margin-top.only-mobile {
+      margin-top: initial; } }
+  .has-big-margin-top.from-tablet {
+    margin-top: initial; }
+    @media screen and (min-width: 769px), print {
+      .has-big-margin-top.from-tablet {
+        margin-top: 7rem; } }
+
+.has-big-padding-top {
+  padding-top: 3.5rem; }
+  @media screen and (min-width: 1088px) {
+    .has-big-padding-top {
+      padding-top: 7rem; } }
+  @media screen and (min-width: 1088px) {
+    .has-big-padding-top.only-mobile {
+      padding-top: initial; } }
+  .has-big-padding-top.from-tablet {
+    padding-top: initial; }
+    @media screen and (min-width: 769px), print {
+      .has-big-padding-top.from-tablet {
+        padding-top: 7rem; } }
+
+.has-big-margin-bottom {
+  margin-bottom: 3.5rem; }
+  .has-big-margin-bottom.in-mobile {
+    margin-bottom: 7rem; }
+  @media screen and (min-width: 1088px) {
+    .has-big-margin-bottom:not(.in-mobile) {
+      margin-bottom: 7rem; } }
+  @media screen and (min-width: 1088px) {
+    .has-big-margin-bottom.only-mobile {
+      margin-bottom: initial; } }
+  .has-big-margin-bottom.from-tablet {
+    margin-bottom: initial; }
+    @media screen and (min-width: 769px), print {
+      .has-big-margin-bottom.from-tablet {
+        margin-bottom: 7rem; } }
+  .has-big-margin-bottom.not-on-last-child:last-child {
+    margin-bottom: inherit; }
+
+.has-big-padding-bottom {
+  padding-bottom: 3.5rem; }
+  @media screen and (min-width: 1088px) {
+    .has-big-padding-bottom {
+      padding-bottom: 7rem; } }
+  @media screen and (min-width: 1088px) {
+    .has-big-padding-bottom.only-mobile {
+      padding-bottom: initial; } }
+  .has-big-padding-bottom.from-tablet {
+    padding-bottom: initial; }
+    @media screen and (min-width: 769px), print {
+      .has-big-padding-bottom.from-tablet {
+        padding-bottom: 7rem; } }
+  .has-big-padding-bottom.not-on-last-child:last-child {
+    padding-bottom: inherit; }
+
+.has-huge-margin-top {
+  margin-top: 5rem; }
+  .has-huge-margin-top.in-mobile {
+    margin-top: 10rem; }
+  @media screen and (min-width: 1088px) {
+    .has-huge-margin-top:not(.in-mobile) {
+      margin-top: 10rem; } }
+  @media screen and (min-width: 1088px) {
+    .has-huge-margin-top.only-mobile {
+      margin-top: initial; } }
+  .has-huge-margin-top.from-tablet {
+    margin-top: initial; }
+    @media screen and (min-width: 769px), print {
+      .has-huge-margin-top.from-tablet {
+        margin-top: 10rem; } }
+
+.has-huge-padding-top {
+  padding-top: 5rem; }
+  @media screen and (min-width: 1088px) {
+    .has-huge-padding-top {
+      padding-top: 10rem; } }
+  @media screen and (min-width: 1088px) {
+    .has-huge-padding-top.only-mobile {
+      padding-top: initial; } }
+  .has-huge-padding-top.from-tablet {
+    padding-top: initial; }
+    @media screen and (min-width: 769px), print {
+      .has-huge-padding-top.from-tablet {
+        padding-top: 10rem; } }
+
+.has-huge-margin-bottom {
+  margin-bottom: 5rem; }
+  .has-huge-margin-bottom.in-mobile {
+    margin-bottom: 10rem; }
+  @media screen and (min-width: 1088px) {
+    .has-huge-margin-bottom:not(.in-mobile) {
+      margin-bottom: 10rem; } }
+  @media screen and (min-width: 1088px) {
+    .has-huge-margin-bottom.only-mobile {
+      margin-bottom: initial; } }
+  .has-huge-margin-bottom.from-tablet {
+    margin-bottom: initial; }
+    @media screen and (min-width: 769px), print {
+      .has-huge-margin-bottom.from-tablet {
+        margin-bottom: 10rem; } }
+  .has-huge-margin-bottom.not-on-last-child:last-child {
+    margin-bottom: inherit; }
+
+.has-huge-padding-bottom {
+  padding-bottom: 5rem; }
+  @media screen and (min-width: 1088px) {
+    .has-huge-padding-bottom {
+      padding-bottom: 10rem; } }
+  @media screen and (min-width: 1088px) {
+    .has-huge-padding-bottom.only-mobile {
+      padding-bottom: initial; } }
+  .has-huge-padding-bottom.from-tablet {
+    padding-bottom: initial; }
+    @media screen and (min-width: 769px), print {
+      .has-huge-padding-bottom.from-tablet {
+        padding-bottom: 10rem; } }
+  .has-huge-padding-bottom.not-on-last-child:last-child {
+    padding-bottom: inherit; }
 
 @font-face {
   font-family: 'Bebas Neue Bold';
@@ -7021,6 +7353,14 @@ a.tag:hover {
           height: 100%; } }
     .modal .modal-content.has-video iframe {
       height: 100%; }
+
+.modal .modal-card {
+  overflow: visible; }
+  @media screen and (min-width: 769px), print {
+    .modal .modal-card .modal-card-body .columns .column {
+      border-right: 1px solid #b5b5b5; }
+      .modal .modal-card .modal-card-body .columns .column:last-of-type {
+        border: none !important; } }
 
 .modal .modal-close {
   background: #242424;
@@ -7103,9 +7443,10 @@ nav.navbar {
   position: absolute;
   z-index: 9 !important;
   top: 0;
+  left: 0;
   width: 100%;
   background: transparent;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.35); }
+  border-bottom: 1px solid #b5b5b5; }
   nav.navbar .navbar-menu {
     background: transparent; }
     @media screen and (max-width: 1087px) {
@@ -7116,15 +7457,16 @@ nav.navbar {
         max-width: 1400px;
         margin: 0 auto; } }
   nav.navbar a.navbar-item, nav.navbar a.navbar-link {
-    color: white;
+    color: #4a4a4a;
     padding: 1.75rem 1.5rem;
     font-family: "Open Sans";
     text-transform: uppercase;
     transition: background-color 250ms linear; }
     nav.navbar a.navbar-item:hover, nav.navbar a.navbar-item:focus, nav.navbar a.navbar-item:active, nav.navbar a.navbar-link:hover, nav.navbar a.navbar-link:focus, nav.navbar a.navbar-link:active {
-      background: rgba(255, 255, 255, 0.3); }
+      color: #363636;
+      background: none; }
   nav.navbar .navbar-burger {
-    color: white; }
+    color: #b5b5b5; }
 
 .wrapper {
   width: 100%;
