@@ -26,6 +26,9 @@ if ( is_front_page() ) {
 	$args['meta_query'] =  array(array('key' => '_wp_page_template','compare' => '==','value' => 'templates/lideres.php'));
 	$context['programa'] = Timber::get_posts( $args )[0];
 }
+else{
+	$templates = array( 'normal.twig' );
+}
 
 
 Timber::render( $templates, $context );

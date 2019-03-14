@@ -12,12 +12,12 @@
 <section class="section" id="main">
   {% include 'snippets/nav.twig' %}
   <div class="container">
-    <div class="columns is-variable-in-desktop is-8 is-multiline has-text-centered">
+    <div class="columns is-multiline has-text-centered is-vcentered">
       <div class="column">
         <hr>
       </div>
       <div class="column is-half">
-        <h2 class="title is-2">{{post.get_field("justification_title")}}</h2>
+        <h2 class="title is-3 is-blue">{{post.get_field("justification_title")}}</h2>
       </div>
       <div class="column">
         <hr>
@@ -72,7 +72,6 @@
               </i>
               <span>más información</span>
             </a>
-            {{ justi.sub }}
           </div>
         </div>
       </div>
@@ -135,7 +134,7 @@
 </section>
 <section class="section">
   <div class="container">
-    <div class="columns is-variable in-desktop in-8">
+    <div class="columns is-variable in-desktop in-8 is-multiline">
       {% for vid in programa.get_field('videos') %}
       <div class="column is-half">
         <h4 class="subtitle is-3 is-capitalized is-blue">{{vid.title}}</h4>
@@ -172,42 +171,6 @@
     </div>
   </div>
 </section>#}
-<section class="section" id="contact">
-  <div class="container">
-    <div class="columns is-centered is-multiline has-text-centered">
-      <div class="column is-one-third">
-        <hr>
-      </div>
-      <div class="column is-one-third">
-        <h2 class="title is-2">contactanos</h2>
-      </div>
-      <div class="column is-one-third">
-        <hr>
-      </div>
-      <div class="column is-half">
-        <a class="button alt alt-font">
-          <span class="icon">
-            <i class="far fa-envelope"></i>
-          </span>
-          <span>Info@thecenterforcompetitiveness.org  </span>
-        </a>
-        <br>
-        <a class="button alt alt-font">
-          <span class="icon">
-            <i class="fas fa-phone"></i>
-          </span>
-          <span>+575 3785097</span>
-        </a>
-        <br>
-        <a class="button alt alt-font">
-          <span class="icon">
-            <i class="fas fa-home"></i>
-          </span>
-          <span>Calle 86 No. 50-130</span>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
+{% include 'snippets/contact.twig' %}
 
 {% endblock %}

@@ -4,7 +4,7 @@ $button-padding-vertical: 1.2rem;
 $box-padding: 2rem;
 $box-shadow: none;
 
-$blue: #1913ed;
+$blue: #2367d4;
 $yellow: #ffcd3c;
 $size-1: 4rem;
 $size-2: 3rem;
@@ -62,6 +62,13 @@ section.section{
 				}
 			}
 			
+		}
+	}
+}
+.hero{
+	.hero-body{
+		@include tablet{
+			padding: 4rem 1.5rem;
 		}
 	}
 }
@@ -152,6 +159,11 @@ section.section{
     font-weight: normal;
     font-style: normal;
 
+}
+img{
+	&.alignright{
+		float: right;
+	}
 }
 .subtitle{
 	font-family: 'Open Sans','Bebas Neue', "serif";
@@ -274,7 +286,7 @@ section{
 		}
 	}
 	&#home{
-		background: transparent;
+		//background: transparent;
 		position: relative;
 		.mask{
 			position: absolute;
@@ -286,7 +298,7 @@ section{
 			height: 100%;
 		}
 		&.no-video{
-			background: $blue;
+			//background: $blue;
 		}
 		*{
 			z-index: 2;
@@ -323,6 +335,9 @@ nav.navbar{
 	width: 100%;
 	background: transparent;
 	border-bottom: 1px solid $grey-light;
+	&.is-relative{
+		position: relative;
+	}
 	@include tablet{
 
 	}

@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+{% include 'snippets/nav.twig' with {classes:"is-white is-relative"} %}
+<section class="hero is-info is-bold no-video" id="home">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns has-text-centered is-multiline">
+        <div class="column is-full">
+          <h1 class="title is-1">
+          	{{post.title}}
+          </h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="main">
+  <div class="container">
+    <div class="columns is-variable-in-desktop is-8 is-multiline">
+      <div class="column is-full content">
+        {{post.content}}
+      </div>
+     
+    </div>
+  </div>
+</section>
+{% include 'snippets/contact.twig' %}
+    
+{% endblock %}
