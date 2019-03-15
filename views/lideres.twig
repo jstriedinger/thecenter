@@ -1,30 +1,30 @@
 {% extends 'base.html.twig' %}
 {% block content %}
-<section class="hero is-medium no-video" id="home">
-    {% include 'snippets/nav.twig' %}
-  <div class="hero-body">
-    <div class="container">
-      <div class="columns has-text-centered is-multiline">
-        <div class="column is-full">
-          <h1 class="title is-1">
-          	{{post.title}}
-          </h1>
-          
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="section" id="main">
+{% include 'snippets/nav.twig' with {classes:"is-relative"}%}
+
+<section class="section">
   <div class="container">
-    <div class="columns is-variable-in-desktop is-8 is-multiline">
-      <div class="column is-full content">
-        {{post.content}}
+    <div class="columns">
+      <div class="column is-two-thirds">
+        <h1 class="subtitle is-2 is-spaced is-blue">{{post.title}}</h1>
+        <h3 class="subtitle is-4"><strong>Fechas:</strong>
+        </h3>
+        <div class="content">
+          <ul class="subtitle is-5">
+            {% for fecha in post.get_field('dates') %}
+            <li>{{date(fecha.start_date)|date("l, d \\d\\e F ")}}, <strong>{{fecha.venue}}</strong></li>
+            {% endfor %}
+          </ul>
+        </div>
+        <br>
+        <p class="content is-large">
+          {{post.desc}}
+        </p>
       </div>
-     
+      <div class="column">
+        
+      </div>
     </div>
-    <br><br>
-   
   </div>
 </section>
     
