@@ -4,7 +4,7 @@
 
 <section class="section">
   <div class="container">
-    <div class="columns">
+    <div class="columns is-variable in-desktop is-8">
       <div class="column is-two-thirds">
         <h1 class="subtitle is-2 is-spaced is-blue">{{post.title}}</h1>
         <h3 class="subtitle is-4"><strong>Fechas:</strong>
@@ -17,12 +17,43 @@
           </ul>
         </div>
         <br>
-        <p class="content is-large">
-          {{post.desc}}
-        </p>
+        {{post.content}}
+        <div class="columns is-multiline tabber is-variable in-desktop is-6 has-small-padding-top">
+          <div class="column is-narrow">
+            <div class="tabs is-boxed">
+              <ul>
+                {% for tabi in post.get_field("tabs") %}
+                <li class="{{loop.first ? 'is-active' : ''}}" data-tab="tab-{{loop.index}}">
+                  <a>
+                    <span>{{tabi.title}}</span>
+                  </a>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+          <div class="column">
+            {% for tabi in post.get_field("tabs") %}
+              <div id="tab-{{loop.index}}" class="content-tab content is-small {{loop.first ? 'is-active' : ''}} content" >
+                {{tabi.content}}
+              </div>
+              
+            {% endfor %}
+              
+          </div>
+        </div>
       </div>
       <div class="column">
-        
+        <a href="" class="button is-primary is-fullwidth">aplica ahora</a>
+        <br>
+        <div class="columns">
+          <div class="column is-full">
+            <div class="box">
+              <iframe width="560" height="250" src="{{post.video_r}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <p class="content">{{post.content_r}}</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

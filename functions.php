@@ -86,6 +86,8 @@ function add_to_context( $context ) {
     $hostname = $_SERVER['SERVER_NAME']; 
 
 
+    $context["menu"] = new Timber\Menu( 'normal' );
+
     $custom_logo_id = get_theme_mod( 'custom_logo' );
     $logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
     if ( has_custom_logo() )
@@ -385,6 +387,22 @@ function html5blankcomments($comment, $args, $depth)
 \*------------------------------------*/
 
 // Add Actions
+function inner_page( $atts, $content = null ){
+    $a = shortcode_atts( array(
+        'slug' => 'NULL',
+    ), $atts );
+
+    if($slug != 'NULL'){
+        ob_start();
+        get_template_part($a['slug']);
+        return ob_get_clean();
+    }
+}
+
+add_action('init', 'register_section_shortcodes');
+function register_section_shortcodes(){
+    add_shortcode('inner_page', 'inner_page');
+}
 add_action('init', 'html5blank_header_scripts'); // Add Custom Scripts to wp_head
 add_action('wp_print_scripts', 'html5blank_conditional_scripts'); // Add Conditional Page Scripts
 add_action('get_header', 'enable_threaded_comments'); // Enable Threaded Comments
@@ -493,5 +511,7 @@ function html5_shortcode_demo_2($atts, $content = null) // Demo Heading H2 short
 {
     return '<h2>' . $content . '</h2>';
 }
+
+
 
 ?>

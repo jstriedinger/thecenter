@@ -110,6 +110,29 @@
     </div>
   </div>
 </section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-variable in-desktop in-8 is-multiline">
+      <div class="column is-full">
+        <h2 class="title is-2 is-blue">Nuestros programas producen transformaciones en todos los públicos</h2>
+      </div>
+      {% for vid in programa.get_field('videos') %}
+      <div class="column is-half">
+        <h4 class="subtitle is-3 is-capitalized is-blue">{{vid.title}}</h4>
+        <iframe width="560" height="315" src="{{vid.video}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <a href="{{programa.link}}" class="button alt">
+          <i class="icon">
+                <i class="fas fa-chevron-right fa-lg"></i>
+              </i>
+              <span>más información</span>
+        </a>
+        <br>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
 <section class="section" id="lideres">
   <div class="container">
     <div class="columns is-variable-in-desktop is-8 is-vcentered">
@@ -119,7 +142,7 @@
         </div>
         <h3 class="subtitle is-size-3 is-size-2-fullhd">{{programa.title}}</h3>
         <p class="content">{{programa.desc}}</p>
-        <a href="http://diwebsas.com/mmm/encaminate-hacia-tu-triunfo" class="button alt">
+        <a href="{{programa.link}}" class="button alt">
           <i class="icon is-medium">
                 <i class="fas fa-chevron-right fa-lg"></i>
               </i>
@@ -134,39 +157,19 @@
 </section>
 <section class="section">
   <div class="container">
-    <div class="columns is-variable in-desktop in-8 is-multiline">
-      {% for vid in programa.get_field('videos') %}
+    <div class="columns is-vcentered">
       <div class="column is-half">
-        <h4 class="subtitle is-3 is-capitalized is-blue">{{vid.title}}</h4>
-        <iframe width="560" height="315" src="{{vid.video}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-      {% endfor %}
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    <div class="columns is-variable in-desktop is-8 is-vcentered is-multiline">
-      <div class="column is-half">
-        <h3 class="title is-2">Lleva este programa tu <span class="is-blue">empresa</span> o <span class="is-blue">entidad pública</span></h3>
-        <p class="subtitle is-5">Entrena a tu equipo y compañeros en liderazgo e innovación empresarial.</p>
-        <a class="button alt alt-font">
-          <span class="icon">
-            <i class="far fa-envelope"></i>
-          </span>
-          <span>Info@thecenterforcompetitiveness.org</span>
+        <h2 class="title is-2">programa <span class="is-blue">especializado</span></h2>
+        <p class="content">Lleva nuestros programa y cursos directamente a tu oficina</p>
+        <a href="{{site.link}}/index.php/programa-especializado" class="button alt">
+          <i class="icon is-medium">
+                <i class="fas fa-chevron-right fa-lg"></i>
+              </i>
+              <span>más información</span>
         </a>
       </div>
-      <div class="column is-half">
-        <div class="box">
-          <h3 class="title is-3">programa especializado</h3>
-          <p class="subtitle is-6">Dejanos tus datos y te contactaremos para crearte un programa especializado</p>
-          {{function('do_shortcode','[wpforms id="22" title="false" description="false"]')}}
-        </div>
-      </div>
-      <div class="column is-full">
-        <h4 class="subtitle is-5">Hemos hecho estos programa con la <strong>Gobernación del Atlantico, etc etc</strong></h4>
+      <div class="column">
+        <img src="{{theme.link}}/dist/img/especializado.jpg" alt="">
       </div>
     </div>
   </div>
