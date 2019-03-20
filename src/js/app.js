@@ -6,8 +6,6 @@ import scrollTo from "gsap/ScrollToPlugin";
 export var fadeSpeed = 0.4
 
 
-console.log("yeah!");
-
 function toggleModal(id,open = true)
 {
     if(open)
@@ -36,7 +34,7 @@ function toggleModal(id,open = true)
 $(document).ready(function() {
 
   // Check for click events on the navbar burger icon
-  //toggleModal("videomodal");
+  toggleModal("videomodal");
   $(".navbar-burger").click(function() {
 
       // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
