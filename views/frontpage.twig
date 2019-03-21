@@ -1,14 +1,16 @@
 {% extends 'base.html.twig' %}
 {% block content %}
-<div class="modal is-small" id="videomodal">
+<div class="modal is-big" id="videomodal">
 
   <div class="modal-background"></div>
-  <div class="modal-content has-video has-text-centered">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/dCY-pR8BTbs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen autoplay="1"></iframe>
+  <div class="modal-card">
+    <div class="modal-card-body has-text-centered">
+      <h3 class="title is-2">testimonios</h3>
+      <iframe width="854" height="480" src="https://www.youtube.com/embed/dCY-pR8BTbs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen autoplay="1"></iframe>
+    </div>
     <button class="modal-close is-large close-button" data-modal="videomodal" aria-label="close"></button>
   </div>
 </div>
-{% include 'snippets/testimonies.twig' %}
 <section class="section" id="main">
   {% include 'snippets/nav.twig' %}
   <div class="container">

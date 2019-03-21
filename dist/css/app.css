@@ -3326,7 +3326,7 @@ a.list-item {
     display: flex; }
 
 .modal-background {
-  background-color: rgba(10, 10, 10, 0.86); }
+  background-color: rgba(255, 255, 255, 0.3); }
 
 .modal-content,
 .modal-card {
@@ -3392,7 +3392,7 @@ a.list-item {
   flex-grow: 1;
   flex-shrink: 1;
   overflow: auto;
-  padding: 20px; }
+  padding: 50px; }
 
 .navbar {
   background-color: white;
@@ -4455,7 +4455,7 @@ label.panel-block {
 .box {
   background-color: white;
   border-radius: 6px;
-  box-shadow: none;
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
   color: #363636;
   display: block;
   padding: 2rem; }
@@ -7362,7 +7362,8 @@ img.alignright {
       height: 100%; }
 
 .modal .modal-card {
-  overflow: visible; }
+  overflow: visible;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); }
   @media screen and (min-width: 769px), print {
     .modal .modal-card .modal-card-body .columns .column {
       border-right: 1px solid #b5b5b5; }
@@ -7383,6 +7384,14 @@ img.alignright {
       background-color: #242424; }
     .modal .modal-close.is-white:hover {
       background: white; }
+
+@media screen and (min-width: 769px), print {
+  .modal.is-big .modal-card {
+    width: 700px; } }
+
+@media screen and (min-width: 1088px) {
+  .modal.is-big .modal-card {
+    width: 900px; } }
 
 .video-bg {
   position: absolute;
