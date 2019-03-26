@@ -1,8 +1,7 @@
 @charset "utf-8";
 $button-padding-horizontal: 2rem;
 $button-padding-vertical: 1.2rem;
-$box-padding: 2rem;
-$modal-background-background-color: rgba(white,0.3);
+$modal-background-background-color: white;
 
 $modal-card-body-padding: 50px;
 
@@ -24,44 +23,70 @@ $sizes: (
 $positions: (
     'top','bottom'
 );
+hr{
+	background-color: $grey-lighter
+}
 section.section{
-	&:first-of-type{
-		@include tablet{
-			padding-top: 9rem;
-		}
-	}
 	@include tablet {
 		padding: 5rem 1.5rem;
 	}
-	&#lideres{
+	&#lideres,&#especializado,&#mujer{
 		@include tablet {
 			padding: 7rem 1.5rem;
 		}
 
 	}
+	&.bluebg{
+		background: url(../img/fondo.jpg) left top;
+		background-size: contain;
+		strong{
+			color: white;
+		}
+		.title, .subtitle, .content, p{
+				color: white;
+			}
+
+	}
+}
+section{
+	&.hero{
+		&.bluebg{
+			background: url(../img/fondo.jpg) left top;
+			background-size: contain;
+			strong{
+				color: white;
+			}
+			
+		}
+	}
 }
 @mixin customGap($val: 1.6)
 {
 	@include tablet{
+
+		$columnGap: 1.5rem;
 		@if $val == 6
 		{
 			$columnGap: 1.5rem;
 		}
-		@else{
+		@else if $val == 8{
 			$columnGap: 2rem;
+		}
+		@else{
+			$columnGap: 3rem;
 		}
 		
 		> .column {
-		    padding-left: if($val == 6, 1.5rem, 2rem);
-		    padding-right: if($val == 6, 1.5rem, 2rem);;
+		    padding-left: $columnGap;
+		    padding-right: $columnGap;
 		}
 		
 
 		&.is-multiline{
 			&.is-blog-page{
 				> .column:nth-child(n+4){
-					padding-bottom: if($val == 6, 1.5rem, 2rem);;
-			    	padding-top: if($val == 6, 1.5rem, 2rem);;
+					padding-bottom: $columnGap;
+			    	padding-top: $columnGap;
 				}
 			}
 			
@@ -147,7 +172,7 @@ section.section{
 }
 
 
-@font-face {
+/*@font-face {
     font-family: 'Bebas Neue Bold';
     src: url('../fonts/bebasneue-bold-webfont.woff2') format('woff2'),
          url('../fonts/bebasneue-bold-webfont.woff') format('woff');
@@ -163,17 +188,18 @@ section.section{
     font-weight: normal;
     font-style: normal;
 
-}
+}*/
 img{
 	&.alignright{
 		float: right;
 	}
 }
 .subtitle{
-	font-family: 'Open Sans','Bebas Neue', "serif";
+	font-family: 'Open Sans', "sans-serif";
 }
 .title{
-	font-family: 'Bebas Neue Bold', "serif";
+	font-family: 'Open Sans', "sans-serif";
+	font-weight: bold;
 	span.big{
 		@include tablet{
 			font-size: 5rem;
@@ -190,6 +216,9 @@ img{
 }
 
 .modal{
+	@include mobile {
+		padding: 1rem;
+	}
 	.modal-content{ 
 		overflow: visible;
 		&.has-video{
@@ -229,13 +258,13 @@ img{
 		}
 	}
 	.modal-close{ 
-		background: $black-ter;
+		background: $danger;
 		position: absolute;
 		box-shadow: 0 10px 40px 0 rgba(white,0.1), 0 2px 9px 0 rgba(white,0.06);
 		right: -16px;
 		top: -16px;
 		&:hover{
-			background: $grey-darker;
+			background: darken($danger,10%);
 		}
 		&.is-white{
 			background: $white-ter;
@@ -246,13 +275,17 @@ img{
 				background: white;
 			}
 		}
+		&.is-large{
+			min-height: 50px;
+			min-width: 50px;
+		}
 	}
 	&.is-big .modal-card{
 		@include tablet {
 			width: 700px;
 		}
-		@include desktop {
-			width: 900px;
+		@include fullhd {
+			width: 950px;
 		}
 	}
 }
@@ -292,12 +325,7 @@ section{
 			padding-top: 6rem;
 		}
 	}
-	&#lideres{
-		background: linear-gradient(120deg, #396afc, $blue);
-		.title, .subtitle, .content, p{
-			color: white;
-		}
-	}
+	
 	&#home{
 		//background: transparent;
 		position: relative;
@@ -341,13 +369,11 @@ section{
 	}
 }
 nav.navbar{
-	position: absolute;
 	z-index: 9 !important;
-	top: 0;
-	left: 0;
 	width: 100%;
 	background: transparent;
 	border-bottom: 1px solid $grey-light;
+	max-width: 1400px;
 	&.is-relative{
 		position: relative;
 	}
@@ -357,28 +383,50 @@ nav.navbar{
 	.navbar-menu{
 		background: transparent;
 		@include touch{
-			background: rgba(#1a2434, 0.3);
-			
+			background: white;
 		}
-		@include tablet{
-			max-width: 1400px;
+		@include tablet {
 			margin: 0 auto;
+			max-width: 100%;
+		}
+	}
+	.navbar-start {
+		@include tablet {
+			display: block;
+			max-width: 91%
 		}
 	}
 	a.navbar-item, a.navbar-link{
 		color: $grey-dark;
-		padding: 1.75rem 1.5rem;
+		padding: 1rem 1.5rem;
 		font-family: "Open Sans";
-		text-transform: uppercase;
+		font-size: 0.8rem;
 		transition: background-color 250ms linear;
 		&:hover, &:focus, &:active{
 			color: $grey-darker;
-			background: none;
+			background: whitesmoke;
 
 		}
+		@include tablet {
+			display: inline-block;
+		}
+
+	}
+	.navbar-link:not(.is-arrowless)::after{
+		right: 0.5em;
 	}
 	.navbar-burger{
 		color: $grey-light;
+	}
+	.navbar-brand{
+		.navbar-item{
+			padding-top: 0.5rem;
+			padding-bottom: 0.5rem;
+			img{
+				max-height: 5rem
+			}
+
+		}
 	}
 }
 .wrapper{
@@ -401,8 +449,17 @@ nav.navbar{
     
 	border: 1px solid $grey-light;
 }
+a{
+	&:not(.button):not(.navbar-item)
+	{
+		color: #183d73;
+		text-decoration: underline;
+		font-weight: bold
+	}
+}
 .button{
-	font-family: "Bebas Neue Bold","Bebas Neue";
+	font-family: "Open Sans","sans-serif";
+	font-weight: bold;
 	border-radius: 0 !important;
 	text-transform: uppercase;
 	font-size: 1.2rem;
@@ -415,9 +472,9 @@ nav.navbar{
 		color: $yellow;
 		padding-left: 0.6rem;
 		.icon{
-			border: 2px solid $yellow;
+			border: 3px solid $yellow;
 			border-radius: 100%;
-			padding: 1.5rem;
+			padding: 1.2rem;
 			margin-right: 0.5rem !important;
 			color: $yellow;
 		}
@@ -427,47 +484,24 @@ nav.navbar{
 		text-transform: none;
 	}
 }
-.card{
-	&.goalcard{
-		padding-top: 20rem;
-		border: 1px solid $white-ter;
-		border-radius: 0;
-		box-shadow: none;
-		position: relative;
-		
 
-		.media{
-			display: block;
-			.media-left,.media-content{ display: block; color: white;}
-			img{ max-width: 70%; margin: 0 auto; display: block; }
-			@include desktop{
-				display: flex;
-				align-items: center;
-				.media-left{
-					max-width: 40%;
-					img{
-						max-width: 100%;
-					}
-				}
-
-			}
+.card {
+	&#justi_1, &#justi_4, &#justi_7 {
+		background: #478bcc;
+		.title,.subtitle, .content{
+			color: white;
 		}
-		&.bogotacup, &.ligaf7, &.torneof7, &.esliga{
-			background: url("../img/home.jpg") center center;
-			background-size: auto 100%;
-
+	}
+	&#justi_2, &#justi_5, &#justi_8 {
+		background: #2367d4;
+		.title,.subtitle, .content{
+			color: white;
 		}
-		.mask{
-			position: absolute;
-			top: 0;
-			left: 0;
-			background: linear-gradient(to bottom, transparent, rgba(#1a2434, 1));;
-			z-index: 1 !important;
-			width: 100%;
-			height: 100%;
-		}
-		*{
-			z-index: 2;
+	}
+	&#justi_3, &#justi_6, &#justi_9 {
+		background: #183d73;
+		.title,.subtitle, .content{
+			color: white;
 		}
 	}
 }
@@ -484,6 +518,9 @@ nav.navbar{
 		&.is-8{
 			@include customGap(8);
 		}
+		&.is-12{
+			@include customGap(12);
+		}
 	}
 	&.reversed{
 		@include desktop{
@@ -499,7 +536,7 @@ nav.navbar{
 	}
 }
 .tag{
-	font-family: "Bebas Neue Bold"
+	font-family: "Open Sans"
 }
 
 .wpforms-field{
@@ -509,5 +546,44 @@ nav.navbar{
 {
 	&.is-primary{
 		background: $turquoise !important;
+	}
+}
+.tabs ul {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    max-width: 100%;
+}
+.tabs.is-boxed{
+	ul{
+		border: none;
+
+		li{
+			width: 100%;
+			a{
+				border: 2px solid $grey-lighter;
+				border-top-right-radius: 0; 
+				border-bottom-right-radius: 0 
+			}
+			&.is-active{
+				a{
+					background: $grey-lighter;
+					font-weight: bold;
+				}
+			}
+		}
+	}
+}
+.content-tab{
+	display: none;
+	&.is-active{
+		display: block;
+	}
+}
+#tabscontainer {
+	.column.is-one-quarter{
+		@include tablet {
+			border-right: 1px solid $grey-lighter; 
+			padding: 0;
+		}
 	}
 }

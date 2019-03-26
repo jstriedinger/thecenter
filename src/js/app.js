@@ -3,8 +3,9 @@ import "../sass/main.scss";
 import TweenMax from "gsap/TweenMax"; // imports TweenLite
 import TimelineMax from "gsap/TimelineMax"; // imports TimelineLite
 import scrollTo from "gsap/ScrollToPlugin";
-export var fadeSpeed = 0.4
-
+import YouTubePlayer from 'youtube-player';
+export var fadeSpeed = 0.4;
+var player;
 
 function toggleModal(id,open = true)
 {
@@ -17,22 +18,52 @@ function toggleModal(id,open = true)
     {
         TweenMax.to($(".modal#"+id), fadeSpeed, {opacity: 0, onComplete: function(){
             TweenMax.delayedCall(0.5, function(){$(".modal#"+id).removeClass("is-active")});
-            console.log("stop video")
-
-			$(".modal#videomodal iframe").each(function() { 
-			        var src= $(this).attr('src');
-			        $(this).attr('src',src);  
-			});
-
-            
+            player.stopVideo()
         }})
     }
 }
 
-
+document.addEventListener( 'wpcf7mailsent', function( event ) {
+   console.log("sent")
+  /*setTimeout(function () {
+      //5sec withour gtm reidrection, redirect ourselves
+      console.log("forced redirect")
+      window.location =  window.location+"/gracias";
+  }, 2000);*/
+}, false );
 
 $(document).ready(function() {
 
+  
+  player = YouTubePlayer('video-player');
+  // 'loadVideoById' is queued until the player is ready to receive API calls.
+  player.loadVideoById('jX1V1Vy4UbM');
+  // 'playVideo' is queue until the player is ready to received API calls and after 'loadVideoById' has been called.
+  player.playVideo();
+  player.on('stateChange', (event) => {
+      if(event.data == 0)
+      {
+        toggleModal("videomodal",false)
+      }
+  });
+
+  $(".tabs ul li").click(function(e){
+    let tabid = $(this).data("tab")
+    console.log(tabid)
+    $(".content-tab").removeClass("is-active")
+    $(".content-tab#"+tabid).addClass("is-active")
+    $(".tabs ul li").removeClass("is-active")
+    $(this).addClass("is-active")
+    console.log("bla")
+
+  })
+   $(".wpcf7-form").submit(function(){
+        //Always disable button and change to is-loading
+        var $btn = $(this).find(".button[type='submit']");
+        $btn.addClass("is-loading")
+        //Keep going
+        return true;
+    })
   // Check for click events on the navbar burger icon
   toggleModal("videomodal");
   $(".navbar-burger").click(function() {
@@ -59,5 +90,6 @@ $(document).ready(function() {
     console.log("open")
     let modal = $(this).data("modal");
     toggleModal(modal)
-  })
+  })   
+  
 });

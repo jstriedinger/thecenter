@@ -96,6 +96,268 @@ function add_to_context( $context ) {
     return $context;
 }
 
+add_action( 'wpcf7_init', 'custom_add_form_bulma_inputs' );
+ 
+function custom_add_form_bulma_inputs() {
+    wpcf7_add_form_tag( array('bhinput','bhinput*'), 'bulma_horizontal_input_form_tag_handler', array( 'name-attr' => true ) );
+    wpcf7_add_form_tag( array('bhradio','bhradio*'), 'bulma_horizontal_radio_form_tag_handler', true );
+    wpcf7_add_form_tag( array('bhsubmit'), 'bulma_horizontal_submit_form_tag_handler');
+    wpcf7_add_form_tag( array('bhselect','bhselect*'), 'bulma_horizontal_select_form_tag_handler', array( 'name-attr' => true ));
+}
+add_filter( 'wpcf7_validate_bhinput', 'wpcf7_bhinput_validation_filter', 20, 2 );
+add_filter( 'wpcf7_validate_bhinput*', 'wpcf7_bhinput_validation_filter', 20, 2 );
+ 
+function wpcf7_bhinput_validation_filter( $result, $tag ) {
+    //This is nothing more than a local copy of wpcf7_text_validation_filter
+    $name = $tag->name;
+    $input_type = explode(":", $tag->options[0])[1];
+    $tag->basetype = $input_type;
+
+    $value = isset( $_POST[$name] )
+        ? trim( wp_unslash( strtr( (string) $_POST[$name], "\n", " " ) ) )
+        : '';
+
+    if ( 'text' == $tag->basetype || "textarea" == $tag->basetype) {
+        if ( $tag->is_required() && '' == $value ) {
+            $result->invalidate( $tag, wpcf7_get_message( 'invalid_required' ) );
+        }
+    }
+
+    if ( 'email' == $tag->basetype ) {
+        if ( $tag->is_required() && '' == $value ) {
+            $result->invalidate( $tag, wpcf7_get_message( 'invalid_required' ) );
+        } elseif ( '' != $value && ! wpcf7_is_email( $value ) ) {
+            $result->invalidate( $tag, wpcf7_get_message( 'invalid_email' ) );
+        }
+    }
+
+    if ( 'url' == $tag->basetype ) {
+        if ( $tag->is_required() && '' == $value ) {
+            $result->invalidate( $tag, wpcf7_get_message( 'invalid_required' ) );
+        } elseif ( '' != $value && ! wpcf7_is_url( $value ) ) {
+            $result->invalidate( $tag, wpcf7_get_message( 'invalid_url' ) );
+        }
+    }
+
+    if ( 'tel' == $tag->basetype ) {
+        if ( $tag->is_required() && '' == $value ) {
+            $result->invalidate( $tag, wpcf7_get_message( 'invalid_required' ) );
+        } elseif ( '' != $value && ! wpcf7_is_tel( $value ) ) {
+            $result->invalidate( $tag, wpcf7_get_message( 'invalid_tel' ) );
+        }
+    }
+
+    if ( '' !== $value ) {
+        $maxlength = $tag->get_maxlength_option();
+        $minlength = $tag->get_minlength_option();
+
+        if ( $maxlength && $minlength && $maxlength < $minlength ) {
+            $maxlength = $minlength = null;
+        }
+
+        $code_units = wpcf7_count_code_units( stripslashes( $value ) );
+
+        if ( false !== $code_units ) {
+            if ( $maxlength && $maxlength < $code_units ) {
+                $result->invalidate( $tag, wpcf7_get_message( 'invalid_too_long' ) );
+            } elseif ( $minlength && $code_units < $minlength ) {
+                $result->invalidate( $tag, wpcf7_get_message( 'invalid_too_short' ) );
+            }
+        }
+    }
+
+    return $result;
+}
+function bulma_horizontal_select_form_tag_handler($tag)
+{
+    $required = " ";
+    if (strpos($tag->type, "*")) 
+        $required = 'aria-required="true"';
+
+    $label = $tag->values[0];
+    $input_size = "";
+    $atts = array(
+        'name' => $tag->name
+    );
+    foreach ($tag->options as $option) {
+        $opt = explode(":", $option);
+        if($opt[0] == "size")
+            $input_size = $opt[1];
+    }
+
+    $input = "<select ".wpcf7_format_atts( $atts )." ".$required.">";
+    foreach ( $tag->values as $k => $v ) {
+        if($k > 0)
+        {
+            $selected = "";
+            if($k == 1)
+                $selected = "selected";
+
+            $input .= '<option value="'.esc_html($v).'" '.$selected.'>'.esc_html($v).'</option>';
+        }
+    }
+    $input .= "</select>";
+
+    $formtag = sprintf('<div class="field is-horizontal">
+    <div class="field-label is-%1$s"><label class="label">%2$s</label></div>
+    <div class="field-body">
+        <div class="field"><div class="control"><div class="select is-rounded">%3$s</div></div></div>
+    </div>
+    </div>',
+    $input_size,
+    $label,
+    $input);
+
+    return $formtag;
+
+}
+
+
+function bulma_horizontal_submit_form_tag_handler($tag){
+    $classes = "";
+    $txt= "";
+    $atts = array(
+        'type' => "submit"
+    );
+    foreach ($tag->options as $option) {
+        $opt = explode(":", $option);
+        if($opt[0] == "class")
+        {
+            if(empty($classes))
+                $classes .= $opt[1];
+            else
+                $classes .= " ".$opt[1];
+        }
+    }
+    foreach ( $tag->values as $val ) {
+        $txt .= esc_html($val);
+    }
+
+    $formtag = sprintf('<div class="field submit">
+        <div class="control"><button class="%1$s" %2$s>%3$s</button></div></div>',
+    $classes,wpcf7_format_atts( $atts ),$txt);
+
+    return $formtag;
+}
+function bulma_horizontal_radio_form_tag_handler($tag){
+    $atts = array(
+        'type' => "radio",
+        'name' => $tag->name,
+    );
+    $input_size = "";
+    $label = "";
+    $radio1 = "";
+    $radio2 = "";
+    foreach ($tag->options as $option) {
+        $opt = explode(":", $option);
+        if ($opt[0] == "radio1") {
+            if(empty($radio1))
+                $radio1 .= $opt[1];
+            else
+                $radio1 .= " ".$opt[1];
+        }
+        elseif ($opt[0] == "radio2") {
+            if(empty($radio2))
+                $radio2 .= $opt[1];
+            else
+                $radio2 .= " ".$opt[1];
+        }
+        elseif($opt[0] == "size")
+            $input_size = $opt[1];
+    }
+
+    foreach ( $tag->values as $val ) {
+        $label .= esc_html($val);
+    }
+
+    $input1 = sprintf(
+        '<input %1$s checked /> %2$s',
+        wpcf7_format_atts( $atts ),$radio1 );
+    $input2 = sprintf(
+        '<input %1$s /> %2$s',
+        wpcf7_format_atts( $atts ),$radio2 );
+
+    $formtag = sprintf('<div class="field is-horizontal">
+    <div class="field-label is-%1$s"><label class="label">%2$s</label></div>
+    <div class="field-body">
+        <div class="field"><div class="control has-radios"><label class="radio">%3$s </label><label class="radio">%4$s </label></div></div>
+    </div>
+    </div>',
+    $input_size,$label,$input1,$input2);
+
+    return $formtag;
+ 
+}
+
+function bulma_horizontal_input_form_tag_handler( $tag ) 
+{
+
+    $tag = new WPCF7_FormTag( $tag );
+    $class = wpcf7_form_controls_class( $tag->type );
+
+    if ( empty( $tag->name ) ) {
+        return '';
+    }
+
+    $input_size = "";
+    $input_type = "";
+    $placeholder = "";
+    $label = "";
+
+    foreach ($tag->options as $option) {
+        $opt = explode(":", $option);
+        if($opt[0] == "type")
+            $input_type = $opt[1];
+        elseif($opt[0] == "placeholder")
+        {
+            if(empty($placeholder))
+                $placeholder = $opt[1];
+            else
+                $placeholder .= " ".$opt[1];
+        }
+        elseif($opt[0] == "size")
+            $input_size = $opt[1];
+    }
+    $atts = array(
+        'name' => $tag->name,
+        'placeholder' => $placeholder,
+        'class' => ($input_type == "textarea" ? "textarea" : "input")." is-".$input_size." ".$tag->get_class_option( $class )
+    );
+
+    foreach ( $tag->values as $val ) {
+        $label .= esc_html($val);
+    }
+
+    if($input_type == "textarea")
+        $input = sprintf('<textarea %s></textarea>',wpcf7_format_atts( $atts ) );
+    else
+    {
+        $atts["type"] = $input_type;
+        $input = sprintf('<input %s />',wpcf7_format_atts( $atts ) );
+    }
+
+
+    $formtag = sprintf('<div class="field">
+    <label class="label">%2$s</label>
+    <div class="control"><span class="wpcf7-form-control-wrap %3$s">%4$s</span></div></div>',
+    $input_size,
+    $label,
+    $tag->name,
+    $input);
+ 
+    return $formtag;
+}
+
+/*
+ * Custom change of the HTML code whte validation error occurs.
+ */
+function filter_wpcf7_validation_error( $error, $name, $instance ) { 
+    // make filter magic happen here... 
+    $error=str_replace("class=\"","class=\"content is-small help is-danger has-text-centered-desktop ", $error);
+    return $error; 
+}; 
+add_filter( 'wpcf7_validation_error', 'filter_wpcf7_validation_error', 10, 3 ); 
+
 
 /*------------------------------------*\
 	Functions
@@ -450,6 +712,7 @@ remove_filter('the_excerpt', 'wpautop'); // Remove <p> tags from Excerpt altoget
 // Shortcodes
 add_shortcode('html5_shortcode_demo', 'html5_shortcode_demo'); // You can place [html5_shortcode_demo] in Pages, Posts now.
 add_shortcode('html5_shortcode_demo_2', 'html5_shortcode_demo_2'); // Place [html5_shortcode_demo_2] in Pages, Posts now.
+add_filter( 'wpcf7_load_css', '__return_false' );
 
 // Shortcodes above would be nested like this -
 // [html5_shortcode_demo] [html5_shortcode_demo_2] Here's the page title! [/html5_shortcode_demo_2] [/html5_shortcode_demo]

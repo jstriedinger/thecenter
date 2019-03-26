@@ -5,21 +5,24 @@
   <div class="modal-background"></div>
   <div class="modal-card">
     <div class="modal-card-body has-text-centered">
-      <h3 class="title is-2">testimonios</h3>
-      <iframe width="854" height="480" src="https://www.youtube.com/embed/dCY-pR8BTbs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen autoplay="1"></iframe>
+      <div id="video-player"></div>
+      {#<iframe width="700" height="350" src="https://www.youtube.com/embed/jX1V1Vy4UbM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen autoplay="1"></iframe>#}
+      <br>
+      <h3 class="subtitle is-4">A través del tiempo hemos trabajado con las siguientes instituciones</h3>
+      <img src="{{theme.link}}/dist/img/aliados.png" alt="aliados">
     </div>
     <button class="modal-close is-large close-button" data-modal="videomodal" aria-label="close"></button>
   </div>
 </div>
+{% include 'snippets/nav.twig' %}
 <section class="section" id="main">
-  {% include 'snippets/nav.twig' %}
   <div class="container">
     <div class="columns is-multiline has-text-centered is-vcentered">
       <div class="column">
         <hr>
       </div>
       <div class="column is-half">
-        <h2 class="title is-3 is-blue">{{post.get_field("justification_title")}}</h2>
+        <h2 class="title is-3 is-blue is-capitalized">{{post.get_field("justification_title")}}</h2>
       </div>
       <div class="column">
         <hr>
@@ -34,10 +37,10 @@
         <div class="modal-background"></div>
         <div class="modal-card">
           <div class="modal-card-body">
-            <div class="columns is-variable in-desktop is-6">
+            <div class="columns is-variable-in-desktop is-6 ">
               {% for subi in justi.sub %}
               <div class="column">
-                <h4 class="title is-3">{{subi.title}}</h4>
+                <h4 class="title is-3 has-text-centered is-capitalized">{{subi.title}}</h4>
                 <a href="{{subi.page}}" class="button alt">
                   <i class="icon is-medium">
                     <i class="fas fa-chevron-right fa-lg"></i>
@@ -52,7 +55,7 @@
         </div>
       </div>
       {% endif %}
-      <div class="column is-one-third">
+      <div class="column is-one-third has-text-centered">
         <div class="card" id="justi_{{loop.index}}">
           {% if justi.img is not empty %}
           <div class="card-image">
@@ -62,66 +65,45 @@
           </div>
           {% endif %}
           <div class="card-content">
-            <h4 class="title is-3">{{justi.title}}</h4>
+            <h4 class="title is-4 is-capitalized">{{justi.title}}</h4>
             {% if justi.desc is not empty %}
             <div class="content is-small">
               {{justi.desc}}
             </div>
             {% endif %}
             <a href="{{justi.page}}" class="button alt {{ justi.sub is not empty ? 'opener' : ''}}" {{ justi.sub is not empty ? 'data-modal="justi_' ~ loop.index ~ '_modal" ' : ''}}>
-              <i class="icon is-medium">
-                <i class="fas fa-chevron-right fa-lg"></i>
+              <i class="icon">
+                <i class="fas fa-chevron-right"></i>
               </i>
               <span>más información</span>
             </a>
           </div>
         </div>
+        <br>
+        <a href="{{programa.link}}" class="subtitle is-5">Conviértase en Líder INNOVADOR. HAZ CLIC AQUÍ</a>
       </div>
       {% endfor %}
     </div>
   </div>
 </section>
-
-<section class="section">
+<section class="section" id="publicos">
   <div class="container">
-    <div class="columns is-variable in-desktop is-multiline">
-
+    <div class="columns is-multiline has-text-centered is-vcentered">
+      <div class="column is-hidden-mobile">
+        <hr>
+      </div>
       <div class="column is-two-thirds">
-        <h3 class="title is-1 is-blue">nuestra institución</h3>
-        <h5 class="subtitle is-5">A traves de los años hemos tenido la oportunidad de trabajar con increibles aliados estrategicos y universidades. Mira más de nuestra institución</h5>
-        <a href="#" class="button alt is-large" >
-          <i class="icon is-medium">
-            <i class="fas fa-chevron-right fa-lg"></i>
-          </i>
-          <span>más información</span>
-        </a>
-        
+        <h2 class="title is-3 is-blue is-capitalized">Nuestros programas producen transformaciones en todos los públicos</h2>
       </div>
-      <div class="column has-text-centered">
-        <img src="{{theme.link}}/dist/img/logo.png" alt="">
+      <div class="column is-hidden-mobile">
+        <hr>
       </div>
     </div>
-    <div class="columns is-vcentered">
-      <div class="column">
-        <img src="{{theme.link}}/dist/img/aliados1.jpg" alt="">
-        
-      </div>
-      <div class="column">
-        <img src="{{theme.link}}/dist/img/aliados2.jpg" alt="">
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    <div class="columns is-variable in-desktop in-8 is-multiline">
-      <div class="column is-full">
-        <h2 class="title is-2 is-blue">Nuestros programas producen transformaciones en todos los públicos</h2>
-      </div>
+    <br>
+    <div class="columns is-variable-in-desktop is-12 is-multiline has-text-centered is-vcentered">
       {% for vid in programa.get_field('videos') %}
       <div class="column is-half">
-        <h4 class="subtitle is-3 is-capitalized is-blue">{{vid.title}}</h4>
+        <h4 class="title is-4 is-capitalized is-blue">{{vid.title}}</h4>
         <iframe width="560" height="315" src="{{vid.video}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <a href="{{programa.link}}" class="button alt">
           <i class="icon">
@@ -135,7 +117,7 @@
     </div>
   </div>
 </section>
-<section class="section" id="lideres">
+<section class="section bluebg" id="lideres">
   <div class="container">
     <div class="columns is-variable-in-desktop is-8 is-vcentered">
       <div class="column is-half">
@@ -157,11 +139,11 @@
     </div>
   </div>
 </section>
-<section class="section">
+<section class="section bluebg" id="especializado">
   <div class="container">
-    <div class="columns is-vcentered">
-      <div class="column is-half">
-        <h2 class="title is-2">programa <span class="is-blue">especializado</span></h2>
+    <div class="columns is-variable-in-desktop is-8 is-vcentered reversed">
+      <div class="column is-half has-text-right-tablet">
+        <h2 class="subtitle is-size-3 is-size-2-fullhd is-capitalized">programa especializado</h2>
         <p class="content">Lleva nuestros programa y cursos directamente a tu oficina</p>
         <a href="{{site.link}}/index.php/programa-especializado" class="button alt">
           <i class="icon is-medium">
@@ -170,12 +152,31 @@
               <span>más información</span>
         </a>
       </div>
-      <div class="column">
-        <img src="{{theme.link}}/dist/img/especializado.jpg" alt="">
+      <div class="column is-half">
+        <iframe width="560" height="315" src="{{programa.video_home}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </div>
   </div>
 </section>
+<section class="section bluebg" id="mujer">
+  <div class="container">
+    <div class="columns is-variable-in-desktop is-8 is-vcentered">
+      <div class="column is-half">
+        <h2 class="subtitle is-size-3 is-size-2-fullhd is-capitalized">programa para la mujer</h2>
+        <a href="{{site.link}}/index.php/programa-mujer" class="button alt">
+          <i class="icon is-medium">
+                <i class="fas fa-chevron-right fa-lg"></i>
+              </i>
+              <span>más información</span>
+        </a>
+      </div>
+      <div class="column is-half">
+        <iframe width="560" height="315" src="{{programa.video_home}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
 {% include 'snippets/contact.twig' %}
 
 {% endblock %}

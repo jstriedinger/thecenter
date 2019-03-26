@@ -1,7 +1,17 @@
 {% extends 'base.html.twig' %}
 {% block content %}
 {% include 'snippets/nav.twig' with {classes:"is-relative"}%}
+<div class="modal" id="signupmodal">
 
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <div class="modal-card-body">
+      <h4 class="title is-3">llena el siguiente <span class="is-blue">formulario</span></h4>
+      {{ function('do_shortcode','[contact-form-7 id="' ~ post.form_id ~ '"]')}}
+    </div>
+    <button class="modal-close is-large close-button" data-modal="signupmodal" aria-label="close"></button>
+  </div>
+</div>
 <section class="section">
   <div class="container">
     <div class="columns is-variable in-desktop is-8">
@@ -18,8 +28,9 @@
         </div>
         <br>
         {{post.content}}
-        <div class="columns is-multiline tabber is-variable in-desktop is-6 has-small-padding-top">
-          <div class="column is-narrow">
+        <br>
+        <div class="columns is-multiline tabber is-variable in-desktop is-6 has-small-padding-top" id="tabscontainer">
+          <div class="column is-one-quarter">
             <div class="tabs is-boxed">
               <ul>
                 {% for tabi in post.get_field("tabs") %}
@@ -44,7 +55,7 @@
         </div>
       </div>
       <div class="column">
-        <a href="" class="button is-primary is-fullwidth">aplica ahora</a>
+        <a href="" class="button is-primary is-fullwidth opener" data-modal="signupmodal">aplica ahora</a>
         <br>
         <div class="columns">
           <div class="column is-full">
