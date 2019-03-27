@@ -1,9 +1,11 @@
 @charset "utf-8";
 $button-padding-horizontal: 2rem;
 $button-padding-vertical: 1.2rem;
-$modal-background-background-color: white;
+$modal-background-background-color: #9dd2f3;
 
 $modal-card-body-padding: 50px;
+$card-background-color: transparent;
+
 
 $blue: #2367d4;
 $yellow: #ffcd3c;
@@ -37,8 +39,10 @@ section.section{
 
 	}
 	&.bluebg{
-		background: url(../img/fondo.jpg) left top;
-		background-size: contain;
+		/*background: url(../img/fondo.jpg) left top;
+		background-size: contain;*/
+		background: #183d73;
+
 		strong{
 			color: white;
 		}
@@ -218,6 +222,9 @@ img{
 .modal{
 	@include mobile {
 		padding: 1rem;
+		.modal-card-body{
+			padding: 0;
+		}
 	}
 	.modal-content{ 
 		overflow: visible;
@@ -242,9 +249,12 @@ img{
 		}
 	}
 	.modal-card{
+	
 		overflow: visible;
-		box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+		box-shadow: none !important;
+
 		.modal-card-body{
+			background: $modal-background-background-color;
 			.columns {
 				.column{
 					@include tablet {
@@ -282,9 +292,9 @@ img{
 	}
 	&.is-big .modal-card{
 		@include tablet {
-			width: 700px;
+			width: 750px;
 		}
-		@include fullhd {
+		@include widescreen {
 			width: 950px;
 		}
 	}
@@ -326,44 +336,22 @@ section{
 		}
 	}
 	
-	&#home{
-		//background: transparent;
-		position: relative;
-		.mask{
-			position: absolute;
-			top: 0;
-			left: 0;
-			background: rgba($blue, 0.6);
-			z-index: 1 !important;
-			width: 100%;
-			height: 100%;
+	&#main {
+		background: #478bcc;
+		.title, .subtitle, .content{
+			color: white;
 		}
-		&.no-video{
-			//background: $blue;
+	}
+	&#publicos {
+		background: #2367d4;
+		.title, .subtitle, .content{
+			color: white;
 		}
-		*{
-			z-index: 2;
-		}
-		.wrapper{
-			position: relative;
-			
+	}
 
-			img{
-				max-height: 80px;
-			}
-			@include tablet{
-				width: 95%;
-				max-width: 1400px;
-				margin: 0 auto;
-				border: 1px solid $white-ter;
-				margin-bottom: -3.5rem
-			}
-			.title, .subtitle{
-				color: inherit;
-			}
-
-		}
-		.title, .subtitle, .icon{
+	&#contact {
+		background: #478bcc;
+		.title, .subtitle, .content{
 			color: white;
 		}
 	}
@@ -374,11 +362,9 @@ nav.navbar{
 	background: transparent;
 	border-bottom: 1px solid $grey-light;
 	max-width: 1400px;
+	flex-wrap: wrap;
 	&.is-relative{
 		position: relative;
-	}
-	@include tablet{
-
 	}
 	.navbar-menu{
 		background: transparent;
@@ -428,6 +414,19 @@ nav.navbar{
 
 		}
 	}
+	@include tablet {
+		.navbar-brand{
+			display: block;
+			margin: 0 auto;
+			flex: 1 0 100%;
+			text-align:  center;
+		} 
+		.navbar-menu{
+			flex-grow: 0;
+			display: block;
+
+		}
+	}
 }
 .wrapper{
 	width: 100%;
@@ -450,7 +449,7 @@ nav.navbar{
 	border: 1px solid $grey-light;
 }
 a{
-	&:not(.button):not(.navbar-item)
+	&:not(.button):not(.navbar-item):not(.navbar-link)
 	{
 		color: #183d73;
 		text-decoration: underline;
@@ -485,26 +484,6 @@ a{
 	}
 }
 
-.card {
-	&#justi_1, &#justi_4, &#justi_7 {
-		background: #478bcc;
-		.title,.subtitle, .content{
-			color: white;
-		}
-	}
-	&#justi_2, &#justi_5, &#justi_8 {
-		background: #2367d4;
-		.title,.subtitle, .content{
-			color: white;
-		}
-	}
-	&#justi_3, &#justi_6, &#justi_9 {
-		background: #183d73;
-		.title,.subtitle, .content{
-			color: white;
-		}
-	}
-}
 .columns{
 	&.is-variable-in-desktop
 	{

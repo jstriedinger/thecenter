@@ -35,9 +35,14 @@ document.addEventListener( 'wpcf7mailsent', function( event ) {
 $(document).ready(function() {
 
   
-  player = YouTubePlayer('video-player');
+ // player = YouTubePlayer('video-player');
+  player = YouTubePlayer('video-player', {
+        videoId: 'jX1V1Vy4UbM',
+        width: 800,
+        height: 400
+    });
   // 'loadVideoById' is queued until the player is ready to receive API calls.
-  player.loadVideoById('jX1V1Vy4UbM');
+  //player.loadVideoById('jX1V1Vy4UbM');
   // 'playVideo' is queue until the player is ready to received API calls and after 'loadVideoById' has been called.
   player.playVideo();
   player.on('stateChange', (event) => {

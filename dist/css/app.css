@@ -2887,7 +2887,7 @@ a.has-text-danger:hover, a.has-text-danger:focus {
     content: "\0227B"; }
 
 .card {
-  background-color: white;
+  background-color: transparent;
   box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
   color: #363636;
   max-width: 100%;
@@ -3326,7 +3326,7 @@ a.list-item {
     display: flex; }
 
 .modal-background {
-  background-color: white; }
+  background-color: #9dd2f3; }
 
 .modal-content,
 .modal-card {
@@ -6980,8 +6980,9 @@ hr {
     padding: 7rem 1.5rem; } }
 
 section.section.bluebg {
-  background: url(../img/fondo.jpg) left top;
-  background-size: contain; }
+  /*background: url(../img/fondo.jpg) left top;
+		background-size: contain;*/
+  background: #183d73; }
   section.section.bluebg strong {
     color: white; }
   section.section.bluebg .title, section.section.bluebg .subtitle, section.section.bluebg .content, section.section.bluebg p {
@@ -7363,7 +7364,9 @@ img.alignright {
 
 @media screen and (max-width: 768px) {
   .modal {
-    padding: 1rem; } }
+    padding: 1rem; }
+    .modal .modal-card-body {
+      padding: 0; } }
 
 .modal .modal-content {
   overflow: visible; }
@@ -7386,12 +7389,14 @@ img.alignright {
 
 .modal .modal-card {
   overflow: visible;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); }
-  @media screen and (min-width: 769px), print {
-    .modal .modal-card .modal-card-body .columns .column {
-      border-right: 1px solid #b5b5b5; }
-      .modal .modal-card .modal-card-body .columns .column:last-of-type {
-        border: none !important; } }
+  box-shadow: none !important; }
+  .modal .modal-card .modal-card-body {
+    background: #9dd2f3; }
+    @media screen and (min-width: 769px), print {
+      .modal .modal-card .modal-card-body .columns .column {
+        border-right: 1px solid #b5b5b5; }
+        .modal .modal-card .modal-card-body .columns .column:last-of-type {
+          border: none !important; } }
 
 .modal .modal-close {
   background: #ff3860;
@@ -7413,9 +7418,9 @@ img.alignright {
 
 @media screen and (min-width: 769px), print {
   .modal.is-big .modal-card {
-    width: 700px; } }
+    width: 750px; } }
 
-@media screen and (min-width: 1472px) {
+@media screen and (min-width: 1280px) {
   .modal.is-big .modal-card {
     width: 950px; } }
 
@@ -7446,32 +7451,17 @@ section {
   @media screen and (min-width: 769px), print {
     section:nth-of-type(2) {
       padding-top: 6rem; } }
-  section#home {
-    position: relative; }
-    section#home .mask {
-      position: absolute;
-      top: 0;
-      left: 0;
-      background: rgba(35, 103, 212, 0.6);
-      z-index: 1 !important;
-      width: 100%;
-      height: 100%; }
-    section#home * {
-      z-index: 2; }
-    section#home .wrapper {
-      position: relative; }
-      section#home .wrapper img {
-        max-height: 80px; }
-      @media screen and (min-width: 769px), print {
-        section#home .wrapper {
-          width: 95%;
-          max-width: 1400px;
-          margin: 0 auto;
-          border: 1px solid whitesmoke;
-          margin-bottom: -3.5rem; } }
-      section#home .wrapper .title, section#home .wrapper .subtitle {
-        color: inherit; }
-    section#home .title, section#home .subtitle, section#home .icon {
+  section#main {
+    background: #478bcc; }
+    section#main .title, section#main .subtitle, section#main .content {
+      color: white; }
+  section#publicos {
+    background: #2367d4; }
+    section#publicos .title, section#publicos .subtitle, section#publicos .content {
+      color: white; }
+  section#contact {
+    background: #478bcc; }
+    section#contact .title, section#contact .subtitle, section#contact .content {
       color: white; }
 
 nav.navbar {
@@ -7479,7 +7469,8 @@ nav.navbar {
   width: 100%;
   background: transparent;
   border-bottom: 1px solid #b5b5b5;
-  max-width: 1400px; }
+  max-width: 1400px;
+  flex-wrap: wrap; }
   nav.navbar.is-relative {
     position: relative; }
   nav.navbar .navbar-menu {
@@ -7516,6 +7507,15 @@ nav.navbar {
     padding-bottom: 0.5rem; }
     nav.navbar .navbar-brand .navbar-item img {
       max-height: 5rem; }
+  @media screen and (min-width: 769px), print {
+    nav.navbar .navbar-brand {
+      display: block;
+      margin: 0 auto;
+      flex: 1 0 100%;
+      text-align: center; }
+    nav.navbar .navbar-menu {
+      flex-grow: 0;
+      display: block; } }
 
 .wrapper {
   width: 100%;
@@ -7532,7 +7532,7 @@ nav.navbar {
   border-radius: 0;
   border: 1px solid #b5b5b5; }
 
-a:not(.button):not(.navbar-item) {
+a:not(.button):not(.navbar-item):not(.navbar-link) {
   color: #183d73;
   text-decoration: underline;
   font-weight: bold; }
@@ -7559,21 +7559,6 @@ a:not(.button):not(.navbar-item) {
   .button.alt-font {
     font-family: "Open Sans";
     text-transform: none; }
-
-.card#justi_1, .card#justi_4, .card#justi_7 {
-  background: #478bcc; }
-  .card#justi_1 .title, .card#justi_1 .subtitle, .card#justi_1 .content, .card#justi_4 .title, .card#justi_4 .subtitle, .card#justi_4 .content, .card#justi_7 .title, .card#justi_7 .subtitle, .card#justi_7 .content {
-    color: white; }
-
-.card#justi_2, .card#justi_5, .card#justi_8 {
-  background: #2367d4; }
-  .card#justi_2 .title, .card#justi_2 .subtitle, .card#justi_2 .content, .card#justi_5 .title, .card#justi_5 .subtitle, .card#justi_5 .content, .card#justi_8 .title, .card#justi_8 .subtitle, .card#justi_8 .content {
-    color: white; }
-
-.card#justi_3, .card#justi_6, .card#justi_9 {
-  background: #183d73; }
-  .card#justi_3 .title, .card#justi_3 .subtitle, .card#justi_3 .content, .card#justi_6 .title, .card#justi_6 .subtitle, .card#justi_6 .content, .card#justi_9 .title, .card#justi_9 .subtitle, .card#justi_9 .content {
-    color: white; }
 
 .columns.is-variable-in-desktop .columns {
   margin: 0; }

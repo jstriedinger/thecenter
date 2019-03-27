@@ -7,8 +7,8 @@
     <div class="modal-card-body has-text-centered">
       <div id="video-player"></div>
       {#<iframe width="700" height="350" src="https://www.youtube.com/embed/jX1V1Vy4UbM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen autoplay="1"></iframe>#}
-      <br>
-      <h3 class="subtitle is-4">A través del tiempo hemos trabajado con las siguientes instituciones</h3>
+      <br><br>
+      <h3 class="subtitle is-5">A través del tiempo hemos trabajado con las siguientes instituciones</h3>
       <img src="{{theme.link}}/dist/img/aliados.png" alt="aliados">
     </div>
     <button class="modal-close is-large close-button" data-modal="videomodal" aria-label="close"></button>
@@ -18,13 +18,13 @@
 <section class="section" id="main">
   <div class="container">
     <div class="columns is-multiline has-text-centered is-vcentered">
-      <div class="column">
+      <div class="column is-hidden-mobile">
         <hr>
       </div>
       <div class="column is-half">
         <h2 class="title is-3 is-blue is-capitalized">{{post.get_field("justification_title")}}</h2>
       </div>
-      <div class="column">
+      <div class="column is-hidden-mobile">
         <hr>
       </div>
     </div>
@@ -80,7 +80,7 @@
           </div>
         </div>
         <br>
-        <a href="{{programa.link}}" class="subtitle is-5">Conviértase en Líder INNOVADOR. HAZ CLIC AQUÍ</a>
+        <a href="{{programa.link}}" class="subtitle is-6">Conviértase en Líder INNOVADOR. HAZ CLIC AQUÍ</a>
       </div>
       {% endfor %}
     </div>
@@ -100,21 +100,22 @@
       </div>
     </div>
     <br>
-    <div class="columns is-variable-in-desktop is-12 is-multiline has-text-centered is-vcentered">
-      {% for vid in programa.get_field('videos') %}
-      <div class="column is-half">
-        <h4 class="title is-4 is-capitalized is-blue">{{vid.title}}</h4>
-        <iframe width="560" height="315" src="{{vid.video}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <a href="{{programa.link}}" class="button alt">
-          <i class="icon">
-                <i class="fas fa-chevron-right fa-lg"></i>
-              </i>
-              <span>más información</span>
-        </a>
-        <br>
-      </div>
-      {% endfor %}
-    </div>
+    {% for vid in programa.get_field('videos') %}
+        <div class="columns is-variable-in-desktop is-8 is-vcentered {{loop.index is divisible by(2) ? 'reversed' : ''  }} has-medium-padding-top">
+          <div class="column is-half {{loop.index is divisible by(2) ? 'has-text-right-tablet' : ''  }}">
+            <h2 class="title is-size-4 is-capitalized">{{vid.title}}</h2>
+            <a href="{{programa.link}}" class="button alt">
+              <i class="icon">
+                    <i class="fas fa-chevron-right fa-lg"></i>
+                  </i>
+                  <span>más información</span>
+            </a>
+          </div>
+          <div class="column is-half {{loop.index is divisible by(2) ? 'has-text-left' : 'has-text-right'  }}">
+            <iframe width="400" height="200" src="{{vid.video}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+    {% endfor %}
   </div>
 </section>
 <section class="section bluebg" id="lideres">
