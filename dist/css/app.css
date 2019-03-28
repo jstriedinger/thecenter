@@ -7416,7 +7416,8 @@ img.alignright {
   overflow: visible;
   box-shadow: none !important; }
   .modal .modal-card .modal-card-body {
-    background: #478bcc; }
+    background: #478bcc;
+    padding: 0; }
     @media screen and (min-width: 769px), print {
       .modal .modal-card .modal-card-body .columns .column {
         border-right: 1px solid #b5b5b5; }

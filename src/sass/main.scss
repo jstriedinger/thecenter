@@ -287,6 +287,7 @@ img{
 
 		.modal-card-body{
 			background: $modal-background-background-color;
+			padding: 0;
 			.columns {
 				.column{
 					@include tablet {

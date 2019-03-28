@@ -7,6 +7,8 @@ import YouTubePlayer from 'youtube-player';
 export var fadeSpeed = 0.4;
 var player;
 var is_mobile = false;
+var is_desktop = false;
+var is_wide = false;
 
 function toggleModal(id,open = true)
 {
@@ -36,23 +38,40 @@ document.addEventListener( 'wpcf7mailsent', function( event ) {
 $(document).ready(function() {
 
   if( $(window).width() <= 768 )
-        is_mobile = true
-  
- // player = YouTubePlayer('video-player');
- if(is_mobile)
- {
+  {
+    is_mobile = true
     player = YouTubePlayer('video-player', {
         videoId: 'jX1V1Vy4UbM',
         width: 640,
         height: 300
     });
+  }
+  else if($(window).width() <= 1400)
+  {
+    is_desktop = true
+    player = YouTubePlayer('video-player', {
+        videoId: 'jX1V1Vy4UbM',
+        width: 700,
+        height: 380
+    });
+  }
+  else if($(window).width() <= 1800)
+  {
+    is_wide = true
+    player = YouTubePlayer('video-player', {
+        videoId: 'jX1V1Vy4UbM',
+        width: 800,
+        height: 450
+    });
+  }
+  
+ // player = YouTubePlayer('video-player');
+ if(is_mobile)
+ {
+    
  }
  else {
-  player = YouTubePlayer('video-player', {
-        videoId: 'jX1V1Vy4UbM',
-        width: 850,
-        height: 500
-    });
+  
 
  }
   // 'loadVideoById' is queued until the player is ready to receive API calls.
