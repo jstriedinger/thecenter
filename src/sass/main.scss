@@ -1,10 +1,11 @@
 @charset "utf-8";
 $button-padding-horizontal: 2rem;
 $button-padding-vertical: 1.2rem;
-$modal-background-background-color: #9dd2f3;
+$modal-background-background-color: #478bcc;
 
 $modal-card-body-padding: 50px;
 $card-background-color: transparent;
+$card-shadow: none;
 
 
 $blue: #2367d4;
@@ -26,7 +27,25 @@ $positions: (
     'top','bottom'
 );
 hr{
-	background-color: $grey-lighter
+	background-color: $grey-lighter;
+	height: 1px;
+}
+.container{
+	&.is-small{
+		max-width: 1024px;
+	}
+}
+.card {
+	display: flex;
+	flex-direction: column;
+	border: 2px solid white;
+	@include desktop {
+		height: 100%;
+	}
+	.card-footer {
+		border: none;
+		margin-top: auto;
+	}
 }
 section.section{
 	@include tablet {
@@ -46,8 +65,8 @@ section.section{
 		strong{
 			color: white;
 		}
-		.title, .subtitle, .content, p{
-				color: white;
+		.title, .subtitle, .content, p, a:not(.button){
+				color: white !important;
 			}
 
 	}
@@ -193,9 +212,22 @@ section{
     font-style: normal;
 
 }*/
+
+.contaner.is-small{
+	max-width: 800px;
+	margin: 0 auto;
+}
 img{
 	&.alignright{
 		float: right;
+	}
+}
+#video-player{
+	&:after{
+		content: "Cargando video. Por favor esperar...";
+		font-size: 1.2rem;
+		font-weight: bold;
+		font-style: italic;
 	}
 }
 .subtitle{
@@ -346,6 +378,9 @@ section{
 		background: #2367d4;
 		.title, .subtitle, .content{
 			color: white;
+		}
+		.columns{
+			margin-bottom: 0
 		}
 	}
 

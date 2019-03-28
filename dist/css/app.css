@@ -2888,7 +2888,7 @@ a.has-text-danger:hover, a.has-text-danger:focus {
 
 .card {
   background-color: transparent;
-  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+  box-shadow: none;
   color: #363636;
   max-width: 100%;
   position: relative; }
@@ -3326,7 +3326,7 @@ a.list-item {
     display: flex; }
 
 .modal-background {
-  background-color: #9dd2f3; }
+  background-color: #478bcc; }
 
 .modal-content,
 .modal-card {
@@ -6969,7 +6969,22 @@ a.tag:hover {
   vertical-align: top; }
 
 hr {
-  background-color: #dbdbdb; }
+  background-color: #dbdbdb;
+  height: 1px; }
+
+.container.is-small {
+  max-width: 1024px; }
+
+.card {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid white; }
+  @media screen and (min-width: 1088px) {
+    .card {
+      height: 100%; } }
+  .card .card-footer {
+    border: none;
+    margin-top: auto; }
 
 @media screen and (min-width: 769px), print {
   section.section {
@@ -6985,8 +7000,8 @@ section.section.bluebg {
   background: #183d73; }
   section.section.bluebg strong {
     color: white; }
-  section.section.bluebg .title, section.section.bluebg .subtitle, section.section.bluebg .content, section.section.bluebg p {
-    color: white; }
+  section.section.bluebg .title, section.section.bluebg .subtitle, section.section.bluebg .content, section.section.bluebg p, section.section.bluebg a:not(.button) {
+    color: white !important; }
 
 section.hero.bluebg {
   background: url(../img/fondo.jpg) left top;
@@ -7343,8 +7358,18 @@ section.hero.bluebg {
     font-style: normal;
 
 }*/
+.contaner.is-small {
+  max-width: 800px;
+  margin: 0 auto; }
+
 img.alignright {
   float: right; }
+
+#video-player:after {
+  content: "Cargando video. Por favor esperar...";
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-style: italic; }
 
 .subtitle {
   font-family: 'Open Sans', "sans-serif"; }
@@ -7391,7 +7416,7 @@ img.alignright {
   overflow: visible;
   box-shadow: none !important; }
   .modal .modal-card .modal-card-body {
-    background: #9dd2f3; }
+    background: #478bcc; }
     @media screen and (min-width: 769px), print {
       .modal .modal-card .modal-card-body .columns .column {
         border-right: 1px solid #b5b5b5; }
@@ -7459,6 +7484,8 @@ section {
     background: #2367d4; }
     section#publicos .title, section#publicos .subtitle, section#publicos .content {
       color: white; }
+    section#publicos .columns {
+      margin-bottom: 0; }
   section#contact {
     background: #478bcc; }
     section#contact .title, section#contact .subtitle, section#contact .content {

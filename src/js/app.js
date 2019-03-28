@@ -6,6 +6,7 @@ import scrollTo from "gsap/ScrollToPlugin";
 import YouTubePlayer from 'youtube-player';
 export var fadeSpeed = 0.4;
 var player;
+var is_mobile = false;
 
 function toggleModal(id,open = true)
 {
@@ -34,17 +35,32 @@ document.addEventListener( 'wpcf7mailsent', function( event ) {
 
 $(document).ready(function() {
 
+  if( $(window).width() <= 768 )
+        is_mobile = true
   
  // player = YouTubePlayer('video-player');
+ if(is_mobile)
+ {
+    player = YouTubePlayer('video-player', {
+        videoId: 'jX1V1Vy4UbM',
+        width: 640,
+        height: 300
+    });
+ }
+ else {
   player = YouTubePlayer('video-player', {
         videoId: 'jX1V1Vy4UbM',
-        width: 800,
-        height: 400
+        width: 850,
+        height: 500
     });
+
+ }
   // 'loadVideoById' is queued until the player is ready to receive API calls.
   //player.loadVideoById('jX1V1Vy4UbM');
   // 'playVideo' is queue until the player is ready to received API calls and after 'loadVideoById' has been called.
-  player.playVideo();
+  player.playVideo().then(function () {
+            console.log('Starting to play player1. It will take some time to buffer video before it starts playing.');
+        });;
   player.on('stateChange', (event) => {
       if(event.data == 0)
       {
