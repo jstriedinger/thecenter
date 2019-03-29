@@ -6,40 +6,34 @@
   <div class="modal-background"></div>
   <div class="modal-card">
     <div class="modal-card-body">
-      <h4 class="title is-3">llena el siguiente <span class="is-blue">formulario</span></h4>
+      <h4 class="title is-3">Llena el siguiente formulario</h4>
       {{ function('do_shortcode','[contact-form-7 id="' ~ post.form_id ~ '"]')}}
     </div>
     <button class="modal-close is-large close-button" data-modal="signupmodal" aria-label="close"></button>
   </div>
 </div>
-<section class="section">
-  <div class="container">
-    <div class="columns is-variable in-desktop is-8">
+<section class="section" id="tabmain">
+  <div class="container is-small">
+    <div class="columns is-variable-in-desktop is-6">
       <div class="column is-two-thirds">
-        <h1 class="subtitle is-2 is-spaced is-blue">{{post.title}}</h1>
-        <h3 class="subtitle is-4"><strong>Fechas:</strong>
-        </h3>
-        <div class="content">
-          <ul class="subtitle is-5">
-            {% for fecha in post.get_field('dates') %}
-            <li>{{date(fecha.start_date)|date("l, d \\d\\e F ")}}, <strong>{{fecha.venue}}</strong></li>
-            {% endfor %}
-          </ul>
-        </div>
+        <h1 class="subtitle is-3 is-spaced is-blue">{{post.title}}</h1>
+        <h5 class="subtitle is-6"><strong>Fechas: </strong>{% for fecha in post.get_field('dates') %}{{date(fecha.start_date)|date("l, d \\d\\e F ")}}, {{fecha.venue}} {{loop.last ? '' : '|'}}{% endfor %}
+        </h5>
         <br>
+        <div class="content is-small">
         {{post.content}}
-        <br>
-        <div class="columns is-multiline tabber is-variable in-desktop is-6 has-small-padding-top" id="tabscontainer">
+        </div>
+        <br> 
+        <div class="columns is-multiline tabber is-variable-in-desktop is-6" id="tabscontainer">
           <div class="column is-one-quarter">
-            <div class="tabs is-boxed">
+            <div class="tabs is-boxed ">
               <ul>
                 {% for tabi in post.get_field("tabs") %}
                 <li class="{{loop.first ? 'is-active' : ''}}" data-tab="tab-{{loop.index}}">
-                  <a>
-                    <span>{{tabi.title}}</span>
-                  </a>
+                  {{tabi.title}}
                 </li>
                 {% endfor %}
+                <li class="last"></li>
               </ul>
             </div>
           </div>
@@ -55,15 +49,19 @@
         </div>
       </div>
       <div class="column">
-        <a href="" class="button is-primary is-fullwidth opener" data-modal="signupmodal">aplica ahora</a>
-        <br>
-        <div class="columns">
-          <div class="column is-full">
-            <div class="box">
-              <iframe width="560" height="250" src="{{post.video_r}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              <p class="content">{{post.content_r}}</p>
-            </div>
+        <div class="bgyellow">
+          <div class="button-wrapper">
+            <a href="" class="button is-fullwidth opener is-small  is-uppercase" data-modal="signupmodal">
+              <span class="icon">
+                <i class="fas fa-check"></i>
+              </span>
+              <span>Aplica hoy</span>
+            </a>
           </div>
+        </div>
+        <div class="box green">
+          <iframe width="300" height="180" src="{{post.video_r}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <p class="content">{{post.content_r}}</p>
         </div>
       </div>
     </div>

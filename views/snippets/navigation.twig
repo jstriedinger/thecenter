@@ -1,12 +1,12 @@
 {% for item in menu %}
     {% if item.children|length > 0 %}
       <div class='navbar-item has-dropdown is-hoverable'>
-        <a class='navbar-link' href='#'>{{ item.title }}</a>
+        <a class='navbar-link {{ item.classes | join(" ")}}' href='#'>{{ item.title }}</a>
         <div class='navbar-dropdown is-boxed'>
           {% include "snippets/navigation.twig" with {'menu': item.get_children} %}
         </div>
       </div>
     {% else %}
-        <a href="{{ item.link }}" class="navbar-item {{ item.classes | join(' ') }} is-capitalized">{{ item.title }}</a>
+        <a href="{{ item.link }}" class="navbar-item {{ item.classes | join(' ') }}">{{ item.title }}</a>
     {% endif %}
 {% endfor %}

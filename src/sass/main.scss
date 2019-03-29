@@ -47,28 +47,63 @@ hr{
 		margin-top: auto;
 	}
 }
+.bgyellow{
+	background: #fdfef0;
+	padding: 1rem 2.5rem;
+	.button-wrapper{
+		background: #ffe34b;
+		padding: 0.7rem;
+	}
+	a.button {
+		background: #ffe34b;
+		border: 3px solid white;
+		color: black;
+		padding: 0.5rem 1rem;
+		&::after{
+			border: 3px solid blue;
+		}
+	}
+}
 section.section{
 	@include tablet {
 		padding: 5rem 1.5rem;
 	}
+	&#tabmain {
+		@include tablet {
+			height: 100vh;
+			position: relative;
+			> .container, .columns > .column, .columns, ul, .tabs{
+				height: 100%;
+
+			}
+			.column.is-one-quarter ul li.last {
+				flex: 1;
+			}
+		}
+	}
 	&#lideres,&#especializado,&#mujer{
 		@include tablet {
 			padding: 7rem 1.5rem;
+
 		}
 
 	}
 	&.bluebg{
-		/*background: url(../img/fondo.jpg) left top;
-		background-size: contain;*/
-		background: #183d73;
+		background: url(../img/fondo.png) center top;
+		background-size: 100% auto;
+		background-color: #183d73;
+		background-repeat: no-repeat;
 
-		strong{
-			color: white;
-		}
 		.title, .subtitle, .content, p, a:not(.button){
 				color: white !important;
-			}
-
+				strong {
+					color: white;
+				}
+		}
+		&.normal {
+			background-image: none;
+		}
+		
 	}
 }
 section{
@@ -228,6 +263,7 @@ img{
 		font-size: 1.2rem;
 		font-weight: bold;
 		font-style: italic;
+		color: white;
 	}
 }
 .subtitle{
@@ -288,6 +324,9 @@ img{
 		.modal-card-body{
 			background: $modal-background-background-color;
 			padding: 0;
+			.title, .subtitle, label{
+				color: white;
+			}
 			.columns {
 				.column{
 					@include tablet {
@@ -370,14 +409,14 @@ section{
 	}
 	
 	&#main {
-		background: #478bcc;
+		background-color: #478bcc;
 		.title, .subtitle, .content{
 			color: white;
 		}
 	}
 	&#publicos {
-		background: #2367d4;
-		.title, .subtitle, .content{
+		background-color: #2367d4;
+		.title, .subtitle, .content, strong{
 			color: white;
 		}
 		.columns{
@@ -418,11 +457,17 @@ nav.navbar{
 			max-width: 91%
 		}
 	}
+	.navbar-dropdown{
+		.navbar-item, .navbar-link {
+			width: 100%;
+		}
+	}
 	a.navbar-item, a.navbar-link{
 		color: $grey-dark;
 		padding: 1rem 1.5rem;
 		font-family: "Open Sans";
-		font-size: 0.8rem;
+		font-weight: bold;
+		font-size: 1rem;
 		transition: background-color 250ms linear;
 		&:hover, &:focus, &:active{
 			color: $grey-darker;
@@ -432,10 +477,22 @@ nav.navbar{
 		@include tablet {
 			display: inline-block;
 		}
+		&.bigger{
+			@include tablet {
+				font-size: 1.2rem;
+				font-weight: bold
+			}
+		}
+		&:not(.is-arrowless)::after{
+				right: 0;
+		}
 
 	}
 	.navbar-link:not(.is-arrowless)::after{
 		right: 0.5em;
+		&.bitter{
+			right: 0;
+		}
 	}
 	.navbar-burger{
 		color: $grey-light;
@@ -483,6 +540,11 @@ nav.navbar{
 	border-radius: 0;
     
 	border: 1px solid $grey-light;
+	box-shadow: none;
+	&.green{
+		background: #EEF7ED;
+		border: none;
+	}
 }
 a{
 	&:not(.button):not(.navbar-item):not(.navbar-link)
@@ -496,7 +558,6 @@ a{
 	font-family: "Open Sans","sans-serif";
 	font-weight: bold;
 	border-radius: 0 !important;
-	text-transform: uppercase;
 	font-size: 1.2rem;
 	height: auto;
 
@@ -521,6 +582,11 @@ a{
 }
 
 .columns{
+	&.tabber{
+		@include tablet {
+			border-top: 1px solid $grey-lighter
+		}
+	}
 	&.is-variable-in-desktop
 	{
 		.columns{
@@ -567,6 +633,7 @@ a{
     -webkit-flex-direction: column;
     flex-direction: column;
     max-width: 100%;
+    word-break: break-all;
 }
 .tabs.is-boxed{
 	ul{
@@ -574,16 +641,34 @@ a{
 
 		li{
 			width: 100%;
-			a{
-				border: 2px solid $grey-lighter;
-				border-top-right-radius: 0; 
-				border-bottom-right-radius: 0 
-			}
+			border: 1px solid $grey-lighter;
+			border-left: none;
+			border-top: none;
+			border-radius: 0;
+			text-decoration: none !important;
+			justify-content: flex-start;
+			background: #f9f9f9;
+			padding: 1rem 0.5rem;
+			cursor: pointer;
+			margin: 0;
+			text-transform: uppercase;
+			font-size: 0.7rem;
+			font-weight: bold;
 			&.is-active{
-				a{
-					background: $grey-lighter;
-					font-weight: bold;
+				background: white;
+				border: none;
+				&:not(:last-of-type)
+				{
+					border-bottom: 1px solid $grey-lighter;
+
 				}
+				+li{
+					box-shadow: inset 0 10px 10px -10px rgba(0,0,0,0.4);
+				}
+			}
+			&.last{
+				background: white;
+				cursor: auto;
 			}
 		}
 	}
@@ -597,7 +682,6 @@ a{
 #tabscontainer {
 	.column.is-one-quarter{
 		@include tablet {
-			border-right: 1px solid $grey-lighter; 
 			padding: 0;
 		}
 	}

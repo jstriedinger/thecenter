@@ -15,17 +15,11 @@
   </div>
 </div>
 {% include 'snippets/nav.twig' %}
-<section class="section" id="main">
+<section class="section bluebg" id="main">
   <div class="container">
-    <div class="columns is-multiline has-text-centered is-vcentered">
-      <div class="column is-hidden-mobile">
-        <hr>
-      </div>
+    <div class="columns is-multiline has-text-centered is-centered">
       <div class="column is-half">
-        <h2 class="title is-3 is-blue is-capitalized">¿por qué nuestros programas producen resultados?</h2>
-      </div>
-      <div class="column is-hidden-mobile">
-        <hr>
+        <h2 class="title is-3 is-blue">¿Por qué nuestros programas producen resultados?</h2>
       </div>
     </div>
     <br><br>
@@ -40,12 +34,12 @@
             <div class="columns is-variable-in-desktop is-6 ">
               {% for subi in justi.sub %}
               <div class="column">
-                <h4 class="title is-4 has-text-centered is-capitalized">{{subi.title}}</h4>
+                <h4 class="title is-4 has-text-centered">{{subi.title}}</h4>
                 <a href="{{subi.page}}" class="button alt">
                   <i class="icon is-medium">
                     <i class="fas fa-chevron-right fa-lg"></i>
                   </i>
-                  <span>más información</span>
+                  <span>Más Información</span>
                 </a>
               </div>
               {% endfor %}
@@ -58,7 +52,7 @@
       <div class="column is-one-third has-text-centered">
         <div class="card" id="justi_{{loop.index}}">
           <div class="card-content">
-            <h4 class="title is-5 is-capitalized">{{justi.title}}</h4>
+            <h4 class="title is-5">{{justi.title}}</h4>
             {% if justi.desc is not empty %}
             <div class="content is-small">
               {{justi.desc}}
@@ -71,7 +65,7 @@
               <i class="icon">
                 <i class="fas fa-chevron-right"></i>
               </i>
-              <span>más información</span>
+              <span>Más Información</span>
             </a>
           </div>
         </div>
@@ -83,23 +77,17 @@
   <div class="container has-medium-padding-top">
     <div class="columns is-centered">
       <div class="column is-half has-text-centered">
-          <a href="{{programa.link}}" class="subtitle is-4">Conviértase en Líder INNOVADOR.<br>HAZ CLIC AQUÍ</a>
+          <a href="{{programa.link}}" class="subtitle is-4">Conviértase en Líder INNOVADOR.<br>Haz click AQUÍ</a>
         
       </div>
     </div>
   </div>
 </section>
-<section class="section" id="publicos">
+<section class="section bluebg" id="publicos">
   <div class="container has-medium-padding-bottom">
-    <div class="columns is-multiline has-text-centered is-vcentered">
-      <div class="column is-hidden-mobile">
-        <hr>
-      </div>
+    <div class="columns is-multiline has-text-centered is-centered">
       <div class="column is-two-thirds">
-        <h2 class="title is-3 is-blue is-capitalized">Nuestros programas producen transformaciones en todos los públicos</h2>
-      </div>
-      <div class="column is-hidden-mobile">
-        <hr>
+        <h2 class="title is-3 is-blue">Nuestros programas producen transformaciones en todos los públicos</h2>
       </div>
     </div>
   </div>
@@ -107,34 +95,41 @@
     {% for vid in programa.get_field('videos') %}
         <div class="columns is-variable-in-desktop is-6 is-vcentered {{loop.index is divisible by(2) ? 'reversed' : ''  }} has-small-padding-top has-small-padding-bottom">
           <div class="column is-half {{loop.index is divisible by(2) ? 'has-text-right-tablet' : ''  }}">
-            <h2 class="title is-size-4 is-capitalized">{{vid.title}}</h2>
+            <h2 class="title is-size-4">{{vid.title}}</h2>
             <h4 class="subtitle is-6">{{vid.subtitle}}</h4>
             <a href="{{programa.link}}" class="button alt">
               <i class="icon">
                     <i class="fas fa-chevron-right fa-lg"></i>
                   </i>
-                  <span>más información</span>
+                  <span>Más Información</span>
             </a>
           </div>
           <div class="column is-half {{loop.index is divisible by(2) ? 'has-text-left' : 'has-text-right'  }}">
             <iframe width="400" height="200" src="{{vid.video}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
-        <hr>
+        {{ loop.last ? '' : '<hr>'}}
+        
     {% endfor %}
   </div>
   <div class="container has-medium-padding-top">
-    <div class="columns is-centered">
+    <div class="columns is-centered is-multiline">
       <div class="column is-half has-text-centered">
-          <a href="{{programa.link}}" class="subtitle is-4">Conviértase en Líder INNOVADOR.<br>HAZ CLIC AQUÍ</a>
+          <a href="{{programa.link}}" class="subtitle is-4">Conviértase en Líder INNOVADOR.<br>Haz click AQUÍ</a>
         
+      </div>
+      <div class="column is-full has-text-centered has-medium-padding-top">
+             
       </div>
     </div>
   </div>
 </section>
 <section class="section bluebg" id="lideres">
   <div class="container">
-    <div class="columns is-variable-in-desktop is-8 is-vcentered has-small-padding-bottom">
+    <div class="columns is-variable-in-desktop is-8 is-vcentered has-small-padding-bottom is-multiline">
+      <div class="column is-full has-medium-padding-bottom has-text-centered">
+        <h4 class="subtitle is-3">Aprovecha uno de nuestros tres programas para convertirte en Líder <strong>INNOVADOR</strong> y transformar tu vida y tu institución.</h4> 
+      </div>
       <div class="column is-half">
         <div class="tag is-large">
           programa
@@ -145,23 +140,26 @@
           <i class="icon is-medium">
                 <i class="fas fa-chevron-right fa-lg"></i>
               </i>
-              <span>más información</span>
+              <span>Más Información</span>
         </a>
       </div>
       <div class="column is-half">
         <iframe width="560" height="315" src="{{programa.video_home}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </div>
-    <hr>
+  </div>
+</section>
+<section class="section bluebg normal">
+  <div class="container">
     <div class="columns is-variable-in-desktop is-8 is-vcentered reversed has-small-padding-top has-small-padding-bottom">
       <div class="column is-half has-text-right-tablet">
-        <h2 class="subtitle is-size-3 is-size-2-fullhd is-capitalized">programas especializado</h2>
+        <h2 class="subtitle is-size-3 is-size-2-fullhd">Programas especializados</h2>
         <p class="content">Lleva nuestros programa y cursos directamente a tu oficina</p>
-        <a href="{{site.link}}/index.php/programas-especializado" class="button alt">
+        <a href="{{site.link}}/index.php/programas-especializados" class="button alt">
           <i class="icon is-medium">
                 <i class="fas fa-chevron-right fa-lg"></i>
               </i>
-              <span>más información</span>
+              <span>Más Información</span>
         </a>
       </div>
       <div class="column is-half">
@@ -171,12 +169,12 @@
     <hr>
     <div class="columns is-variable-in-desktop is-8 is-vcentered has-small-padding-top has-small-padding-bottom">
       <div class="column is-half">
-        <h2 class="subtitle is-size-3 is-size-2-fullhd is-capitalized">programa para la mujer</h2>
+        <h2 class="subtitle is-size-3 is-size-2-fullhd">Programa para la mujer</h2>
         <a href="{{site.link}}/index.php/programa-mujer" class="button alt">
           <i class="icon is-medium">
                 <i class="fas fa-chevron-right fa-lg"></i>
               </i>
-              <span>más información</span>
+              <span>Más Información</span>
         </a>
       </div>
       <div class="column is-half">
