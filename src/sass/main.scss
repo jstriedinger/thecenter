@@ -26,13 +26,22 @@ $sizes: (
 $positions: (
     'top','bottom'
 );
+body{
+	background: #478bcc;
+}
 hr{
-	background-color: $grey-lighter;
+	background-color: white;
 	height: 1px;
+	&.big{
+		height: 6px;
+	}
+	&.blue1{
+
+	}
 }
 .container{
 	&.is-small{
-		max-width: 1024px;
+		max-width: 1064px;
 	}
 }
 .card {
@@ -66,19 +75,28 @@ hr{
 }
 section.section{
 	@include tablet {
-		padding: 5rem 1.5rem;
+		padding: 2.5rem 1.5rem;
 	}
+	&.with-divider{
+		padding-bottom: 0;
+		hr {
+			margin: 0 auto;
+			margin-top: 2.5rem;
+		}
+	}
+	
 	&#tabmain {
+		height: 100%;
+		position: relative;
+		> .container, .columns > .column, .columns, ul, .tabs{
+			height: 100%;
+
+		}
+		ul li.last {
+			flex: 1;
+		}
 		@include tablet {
 			height: 100vh;
-			position: relative;
-			> .container, .columns > .column, .columns, ul, .tabs{
-				height: 100%;
-
-			}
-			.column.is-one-quarter ul li.last {
-				flex: 1;
-			}
 		}
 	}
 	&#lideres,&#especializado,&#mujer{
@@ -92,33 +110,27 @@ section.section{
 		background: url(../img/fondo.png) center top;
 		background-size: 100% auto;
 		background-color: #183d73;
-		background-repeat: no-repeat;
+		background-repeat: repeat-y;
 
-		.title, .subtitle, .content, p, a:not(.button){
-				color: white !important;
-				strong {
-					color: white;
-				}
+		.title, .subtitle, .content, p, a:not(.button), .content *{
+			color: white;
+			strong {
+				color: white;
+			}
 		}
 		&.normal {
 			background-image: none;
 		}
+		.box {
+			.content, p, .title, .subtitle, strong{
+				color: inherit !important;
+			}
+		}
 		
 	}
 }
-section{
-	&.hero{
-		&.bluebg{
-			background: url(../img/fondo.jpg) left top;
-			background-size: contain;
-			strong{
-				color: white;
-			}
-			
-		}
-	}
-}
-@mixin customGap($val: 1.6)
+
+@mixin customGap($val: 1.6, $up: false)
 {
 	@include tablet{
 
@@ -137,18 +149,13 @@ section{
 		> .column {
 		    padding-left: $columnGap;
 		    padding-right: $columnGap;
+		    @if $up == true 
+		    {
+		    	padding-top: $columnGap;
+		    	padding-bottom: $columnGap;
+		    }
 		}
 		
-
-		&.is-multiline{
-			&.is-blog-page{
-				> .column:nth-child(n+4){
-					padding-bottom: $columnGap;
-			    	padding-top: $columnGap;
-				}
-			}
-			
-		}
 	}
 }
 
@@ -229,25 +236,6 @@ section{
 	}
 }
 
-
-/*@font-face {
-    font-family: 'Bebas Neue Bold';
-    src: url('../fonts/bebasneue-bold-webfont.woff2') format('woff2'),
-         url('../fonts/bebasneue-bold-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'Bebas Neue';
-    src: url('../fonts/bebasneue-regular-webfont.woff2') format('woff2'),
-         url('../fonts/bebasneue-regular-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}*/
-
 .contaner.is-small{
 	max-width: 800px;
 	margin: 0 auto;
@@ -294,6 +282,12 @@ img{
 			padding: 0;
 		}
 	}
+	.modal-background{
+		background: url(../img/fondo.png) center top;
+		background-size: 100% auto;
+		background-color: $modal-background-background-color;
+		background-repeat: repeat-y;
+	}
 	.modal-content{ 
 		overflow: visible;
 		&.has-video{
@@ -315,6 +309,9 @@ img{
 				height: 100%;
 			}
 		}
+		.title, .subtitle, label{
+				color: white;
+			}
 	}
 	.modal-card{
 	
@@ -322,7 +319,7 @@ img{
 		box-shadow: none !important;
 
 		.modal-card-body{
-			background: $modal-background-background-color;
+			background: transparent;
 			padding: 0;
 			.title, .subtitle, label{
 				color: white;
@@ -402,17 +399,15 @@ body{
 
 section{
 	background: white;
-	&:nth-of-type(2){
-		@include tablet{
-			padding-top: 6rem;
-		}
-	}
 	
 	&#main {
 		background-color: #478bcc;
 		.title, .subtitle, .content{
 			color: white;
 		}
+	}
+	&.light{
+		background-color: #478bcc !important;
 	}
 	&#publicos {
 		background-color: #2367d4;
@@ -425,22 +420,20 @@ section{
 	}
 
 	&#contact {
-		background: #478bcc;
+		background-color: #478bcc;
 		.title, .subtitle, .content{
 			color: white;
 		}
 	}
 }
+
 nav.navbar{
 	z-index: 9 !important;
 	width: 100%;
-	background: transparent;
+	background: white;//#478bcc;
 	border-bottom: 1px solid $grey-light;
 	max-width: 1400px;
 	flex-wrap: wrap;
-	&.is-relative{
-		position: relative;
-	}
 	.navbar-menu{
 		background: transparent;
 		@include touch{
@@ -463,20 +456,18 @@ nav.navbar{
 		}
 	}
 	a.navbar-item, a.navbar-link{
-		color: $grey-dark;
+		color: $grey-darker;
 		padding: 1rem 1.5rem;
 		font-family: "Open Sans";
 		font-weight: bold;
 		font-size: 1rem;
 		transition: background-color 250ms linear;
 		&:hover, &:focus, &:active{
-			color: $grey-darker;
-			background: whitesmoke;
+			color: black;
+			background: transparent;
 
 		}
-		@include tablet {
-			display: inline-block;
-		}
+		
 		&.bigger{
 			@include tablet {
 				font-size: 1.2rem;
@@ -502,9 +493,8 @@ nav.navbar{
 			padding-top: 0.5rem;
 			padding-bottom: 0.5rem;
 			img{
-				max-height: 5rem
+				max-height: 6.5rem
 			}
-
 		}
 	}
 	@include tablet {
@@ -515,9 +505,18 @@ nav.navbar{
 			text-align:  center;
 		} 
 		.navbar-menu{
-			flex-grow: 0;
+			flex-grow: 1;
 			display: block;
-
+			.navbar-start {
+				margin: 0 auto;
+				text-align: center;
+			}
+		}
+		.navbar-item{
+			display: inline-block;
+			img {
+				margin: 0 auto;
+			}
 		}
 	}
 }
@@ -541,9 +540,15 @@ nav.navbar{
     
 	border: 1px solid $grey-light;
 	box-shadow: none;
-	&.green{
-		background: #EEF7ED;
+	&.blue{
+		background: url(../img/fondo.png) center top;
+		background-size: 100% auto;
+		background-color: #183d73;
+		background-repeat: repeat-y;
 		border: none;
+		p.content{
+			color: white;
+		}
 	}
 }
 a{
@@ -561,32 +566,60 @@ a{
 	font-size: 1.2rem;
 	height: auto;
 
+	&.none {
+		border: none;
+		padding: 1rem;
+		font-size: 1rem
+	}
+
 	&.alt{
 		background: transparent;
 		border: none;
 		box-shadow: none;
-		color: $yellow;
+		color: $yellow !important;
+
 		padding-left: 0.6rem;
 		.icon{
 			border: 3px solid $yellow;
 			border-radius: 100%;
 			padding: 1.2rem;
 			margin-right: 0.5rem !important;
-			color: $yellow;
+			color: $yellow !important;
+		}
+		span, i {
+			color: $yellow !important;
 		}
 	}
-	&.alt-font{
-		font-family: "Open Sans";
-		text-transform: none;
+	&.is-yellow{
+		background: $yellow;
+		&:hover,&:active,&:focus{
+			background: $yellow
+		}
+	}
+	
+
+}
+.tabber{
+	display: flex;
+	border-top: 1px solid $grey-lighter;
+	.tabsdiv{
+		flex-basis: 100px;
+		@include tablet {
+			flex-basis: 150px
+		}
+	}
+	.contentdiv{
+		flex: 1;
+		padding: 0.2rem;
+		padding-top: 0.5rem;
+		@include tablet {
+			padding: 1rem;
+		}
 	}
 }
 
 .columns{
-	&.tabber{
-		@include tablet {
-			border-top: 1px solid $grey-lighter
-		}
-	}
+	
 	&.is-variable-in-desktop
 	{
 		.columns{
@@ -598,6 +631,9 @@ a{
 		}
 		&.is-8{
 			@include customGap(8);
+			&.is-up-too{
+				@include customGap(8, true);
+			}
 		}
 		&.is-12{
 			@include customGap(12);
@@ -654,9 +690,11 @@ a{
 			text-transform: uppercase;
 			font-size: 0.7rem;
 			font-weight: bold;
+			color: #2367d4;
 			&.is-active{
 				background: white;
 				border: none;
+				color: black;
 				&:not(:last-of-type)
 				{
 					border-bottom: 1px solid $grey-lighter;
@@ -678,11 +716,16 @@ a{
 	&.is-active{
 		display: block;
 	}
+	.content, p{
+		font-size: 13px !important;
+	}
+
 }
 #tabscontainer {
-	.column.is-one-quarter{
+	.column.is-narrow{
 		@include tablet {
 			padding: 0;
+			width: 105px;
 		}
 	}
 }

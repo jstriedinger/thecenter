@@ -1,8 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block content %}
 {% include 'snippets/nav.twig' with { classes:"is-relative"} %}
-<section class="hero bluebg no-video" id="home">
-  <div class="hero-body">
+<section class="section bluebg" id="home">
     <div class="container">
       <div class="columns has-text-centered is-multiline">
         <div class="column is-full">
@@ -13,15 +12,14 @@
         </div>
       </div>
     </div>
-  </div>
 </section>
-<section id="main" class="section">
+<section id="main" class="section bluebg">
   <div class="container">
-    <div class="columns is-variable-in-desktop is-8 is-multiline">
+    <div class="columns is-multiline is-centered">
       {% if post.get_field("online_payment").active %}
       <div class="column is-half">
         <div class="box">
-          <h3 class="title is-3 has-text-centered">pago online</h3>
+          <h3 class="title is-3 has-text-centered">Pago Online</h3>
           <p class="content">{{post.get_field("online_payment").text}}</p>
           <img src="{{theme.link}}/dist/img/cards2.png" alt="credit card">
           <br><br>
@@ -30,7 +28,7 @@
       </div>
       <div class="column is-half">
         <div class="box">
-          <h3 class="title is-3 has-text-centered">consignación/transferencia bancaria</h3>
+          <h3 class="title is-4 has-text-centered">Consignación/Transferencia Bancaria</h3>
           {{post.get_field("offline_payment").content}}
         </div>
       </div>

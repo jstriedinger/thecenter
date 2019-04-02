@@ -24,8 +24,8 @@
         {{post.content}}
         </div>
         <br> 
-        <div class="columns is-multiline tabber is-variable-in-desktop is-6" id="tabscontainer">
-          <div class="column is-one-quarter">
+        <div class="tabber" id="tabscontainer">
+          <div class="tabsdiv">
             <div class="tabs is-boxed ">
               <ul>
                 {% for tabi in post.get_field("tabs") %}
@@ -37,9 +37,14 @@
               </ul>
             </div>
           </div>
-          <div class="column">
+          <div class="contentdiv">
             {% for tabi in post.get_field("tabs") %}
-              <div id="tab-{{loop.index}}" class="content-tab content is-small {{loop.first ? 'is-active' : ''}} content" >
+              <div id="tab-{{loop.index}}" class="content-tab content {{loop.first ? 'is-active' : ''}} content" >
+                {% if loop.first %}
+                <h4 class="subtitle is-6">{{post.title}}</h4>
+                <a href="https://getedu.lpages.co/lideres-innovadores/" class="button none"><span class="icon is-large"><i class="far fa-file fa-lg"></i></span><span>Mira el brochure</span></a>
+                <br><br>
+                {% endif %}
                 {{tabi.content}}
               </div>
               
@@ -59,7 +64,7 @@
             </a>
           </div>
         </div>
-        <div class="box green">
+        <div class="box blue">
           <iframe width="300" height="180" src="{{post.video_r}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <p class="content">{{post.content_r}}</p>
         </div>

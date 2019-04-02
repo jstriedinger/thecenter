@@ -1,20 +1,38 @@
 {% extends 'base.html.twig' %}
 {% block content %}
 {% include 'snippets/nav.twig' with { classes:"is-relative"} %}
-<section class="hero bluebg no-video" id="home">
-  <div class="hero-body">
+<div class="modal" id="thanksmodal">
+
+  <div class="modal-background"></div>
+  <div class="modal-content has-text-centered">
+      <h4 class="title is-3">¡GRACIAS!</h4>
+      <h5 class="subtitle is-5">Muy pronto nos pondremos en contacto contigo.</h5>
+      <button class="modal-close is-large close-button" data-modal="thanksmodal" aria-label="close"></button>
+  </div>
+</div>
+<div class="modal" id="formmodal">
+
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <div class="modal-card-body">
+      <h4 class="title is-3">Llena el siguiente formulario</h4>
+      {{ function('do_shortcode','[contact-form-7 id="' ~ post.wp_form_id ~ '"]')}}
+    </div>
+    <button class="modal-close is-large close-button" data-modal="formmodal" aria-label="close"></button>
+  </div>
+</div>
+<section class="section bluebg" id="home">
     <div class="container">
       <div class="columns has-text-centered is-multiline">
         <div class="column is-full">
-          <h1 class="title is-1">
+          <h1 class="title is-2">
           	{{post.title}}
           </h1>
         </div>
       </div>
     </div>
-  </div>
 </section>
-<section id="main" class="section">
+<section id="main" class="section bluebg">
   <div class="container">
     <div class="columns is-variable-in-desktop is-8 is-multiline">
       <div class="column is-full content">

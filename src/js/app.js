@@ -27,12 +27,21 @@ function toggleModal(id,open = true)
 }
 
 document.addEventListener( 'wpcf7mailsent', function( event ) {
-   console.log("sent")
-  /*setTimeout(function () {
-      //5sec withour gtm reidrection, redirect ourselves
-      console.log("forced redirect")
-      window.location =  window.location+"/gracias";
-  }, 2000);*/
+  console.log(event.detail.contactFormId)
+  if(event.detail.contactFormId == 94 || event.detail.contactFormId == 179)
+  {
+    toggleModal("formmodal",false)
+    toggleModal("thanksmodal")
+  }
+  else{
+    setTimeout(function () {
+        //5sec withour gtm reidrection, redirect ourselves
+        console.log("forced redirect")
+        console.log(window.location+"gracias/")
+        window.location =  window.location+"gracias/";
+    }, 2000);
+  }
+  
 }, false );
 
 $(document).ready(function() {
@@ -123,8 +132,8 @@ $(document).ready(function() {
 
   $(".button.opener").click(function(e){
     e.preventDefault()
-    console.log("open")
     let modal = $(this).data("modal");
+    console.log("open")
     toggleModal(modal)
   })   
   
