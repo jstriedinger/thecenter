@@ -430,9 +430,8 @@ section{
 nav.navbar{
 	z-index: 9 !important;
 	width: 100%;
-	background: white;//#478bcc;
+	background: #478bcc;
 	border-bottom: 1px solid $grey-light;
-	max-width: 1400px;
 	flex-wrap: wrap;
 	.navbar-menu{
 		background: transparent;
@@ -453,19 +452,25 @@ nav.navbar{
 	.navbar-dropdown{
 		.navbar-item, .navbar-link {
 			width: 100%;
+			text-align: left;
+			color: black;
+			strong {
+				color: black;
+			}
 		}
+
 	}
 	a.navbar-item, a.navbar-link{
-		color: $grey-darker;
+		@include tablet {
+			color: white;
+		}
 		padding: 1rem 1.5rem;
 		font-family: "Open Sans";
 		font-weight: bold;
 		font-size: 1rem;
 		transition: background-color 250ms linear;
 		&:hover, &:focus, &:active{
-			color: black;
 			background: transparent;
-
 		}
 		
 		&.bigger{
@@ -477,7 +482,17 @@ nav.navbar{
 		&:not(.is-arrowless)::after{
 				right: 0;
 		}
+		
 
+	}
+	.navbar-item {
+		&.has-dropdown {
+			&:hover, &:active, &:focus {
+				.navbar-link {
+					background: transparent;
+				}
+			}
+		}
 	}
 	.navbar-link:not(.is-arrowless)::after{
 		right: 0.5em;
@@ -486,7 +501,7 @@ nav.navbar{
 		}
 	}
 	.navbar-burger{
-		color: $grey-light;
+		color: white;
 	}
 	.navbar-brand{
 		.navbar-item{
