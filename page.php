@@ -25,6 +25,13 @@ if ( is_front_page() ) {
 	);
 	$args['meta_query'] =  array(array('key' => '_wp_page_template','compare' => '==','value' => 'templates/lideres.php'));
 	$context['programa'] = Timber::get_posts( $args )[0];
+
+	//find all events
+	$args = array (
+	    'post_type'              => 'page'
+	);
+	$args['meta_query'] =  array(array('key' => '_wp_page_template','compare' => '==','value' => 'templates/programas.php'));
+	$context['programas'] = Timber::get_posts( $args );
 }
 else{
 	$templates = array( 'normal.twig' );

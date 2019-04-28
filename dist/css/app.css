@@ -7012,8 +7012,7 @@ hr {
 section.section.with-divider {
   padding-bottom: 0; }
   section.section.with-divider hr {
-    margin: 0 auto;
-    margin-top: 2.5rem; }
+    margin: 2rem auto; }
 
 section.section#tabmain {
   height: 100%;

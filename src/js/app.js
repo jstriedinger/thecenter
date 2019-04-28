@@ -48,11 +48,12 @@ $(document).ready(function() {
 
   if(document.getElementById("video-player"))
   {
+    let v = $("#video-player").data("video")
     if( $(window).width() <= 768 )
     {
       is_mobile = true
       player = YouTubePlayer('video-player', {
-          videoId: 'jX1V1Vy4UbM',
+          videoId: v,
           width: 640,
           height: 300
       });
@@ -61,7 +62,7 @@ $(document).ready(function() {
     {
       is_desktop = true
       player = YouTubePlayer('video-player', {
-          videoId: 'jX1V1Vy4UbM',
+          videoId: v,
           width: 700,
           height: 380
       });
@@ -70,7 +71,7 @@ $(document).ready(function() {
     {
       is_wide = true
       player = YouTubePlayer('video-player', {
-          videoId: 'jX1V1Vy4UbM',
+          videoId: v,
           width: 800,
           height: 450
       });
@@ -80,8 +81,8 @@ $(document).ready(function() {
     //player.loadVideoById('jX1V1Vy4UbM');
     // 'playVideo' is queue until the player is ready to received API calls and after 'loadVideoById' has been called.
     player.playVideo().then(function () {
-              console.log('Starting to play player1. It will take some time to buffer video before it starts playing.');
-          });;
+        console.log('Starting to play player1. It will take some time to buffer video before it starts playing.');
+    });;
     player.on('stateChange', (event) => {
         if(event.data == 0)
         {
