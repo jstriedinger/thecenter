@@ -52,7 +52,7 @@ $(document).ready(function() {
     {
       is_mobile = true
       player = YouTubePlayer('video-player', {
-          videoId: 'jX1V1Vy4UbM',
+          videoId: 'uwpFLfVeTmk',
           width: 640,
           height: 300
       });
@@ -61,7 +61,7 @@ $(document).ready(function() {
     {
       is_desktop = true
       player = YouTubePlayer('video-player', {
-          videoId: 'jX1V1Vy4UbM',
+          videoId: 'uwpFLfVeTmk',
           width: 700,
           height: 380
       });
@@ -70,7 +70,7 @@ $(document).ready(function() {
     {
       is_wide = true
       player = YouTubePlayer('video-player', {
-          videoId: 'jX1V1Vy4UbM',
+          videoId: 'uwpFLfVeTmk',
           width: 800,
           height: 450
       });
