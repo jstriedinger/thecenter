@@ -5,8 +5,7 @@
   <div class="modal-background"></div>
   <div class="modal-card">
     <div class="modal-card-body has-text-centered">
-      <div id="video-player"></div>
-      {#<iframe width="700" height="350" src="https://www.youtube.com/embed/jX1V1Vy4UbM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen autoplay="1"></iframe>#}
+      <div id="video-player" data-video="{{post.video_home}}"></div>
       <br><br>
       <h3 class="subtitle is-5">A través del tiempo hemos trabajado con las siguientes instituciones</h3>
       <div style="background:white;padding:0.8rem">
@@ -20,8 +19,8 @@
 <section class="section bluebg with-divider" id="main">
   <div class="container">
     <div class="columns is-multiline has-text-centered is-centered">
-      <div class="column is-full">
-        <h2 class="title is-3 is-blue">¿Por qué nuestros programas se aplican de inmediato y producen eficaces transformaciones perdurables, en personas y empresas? </h2>
+      <div class="column is-full content">
+        {{ post.justification_title }}
       </div>
     </div>
     <br><br>
@@ -53,15 +52,16 @@
       {% endif %}
       <div class="column is-one-third has-text-centered">
         <div class="card" id="justi_{{loop.index}}">
-          <div class="card-content">
-            <h4 class="title is-5">{{justi.title}}</h4>
-            {% if justi.desc is not empty %}
-            <div class="content is-small">
-              {{justi.desc}}
-            </div>
-            {% endif %}
-            
+          {% if justi.img is not empty %}
+          <div class="card-image">
+            <img src="{{justi.img}}" alt="">
           </div>
+          {% endif %}
+          <div class="card-content content">
+            {{justi.title}}
+            {{justi.desc}}
+          </div>
+          {% if justi.page is not empty %}
           <div class="card-footer">
             <a href="{{justi.page}}" class="card-footer-item button alt {{ justi.sub is not empty ? 'opener' : ''}}" {{ justi.sub is not empty ? 'data-modal="justi_' ~ loop.index ~ '_modal" ' : ''}}>
               <i class="icon">
@@ -70,6 +70,7 @@
               <span>Más Información</span>
             </a>
           </div>
+          {% endif %}
         </div>
       </div>
       {% endfor %}
@@ -89,26 +90,29 @@
 <section class="section bluebg with-divider" id="publicos">
   <div class="container has-medium-padding-bottom">
     <div class="columns is-multiline has-text-centered is-centered">
-      <div class="column is-two-thirds">
-        <h2 class="title is-3 is-blue">Nuestros programas producen transformaciones en todos los públicos</h2>
+      <div class="column is-two-thirds content">
+        {{post.get_field('videos').title}}
       </div>
     </div>
   </div>
   <div class="container is-small">
-    {% for vid in programa.get_field('videos') %}
+    {% for vid in post.get_field("videos").vids %}
         <div class="columns is-variable-in-desktop is-6 is-vcentered {{loop.index is divisible by(2) ? 'reversed' : ''  }} has-small-padding-top has-small-padding-bottom">
           <div class="column is-half {{loop.index is divisible by(2) ? 'has-text-right-tablet' : ''  }}">
-            <h2 class="title is-size-4">{{vid.title}}</h2>
-            <h4 class="subtitle is-6">{{vid.subtitle}}</h4>
-            <a href="{{programa.link}}" class="button alt">
-              <i class="icon">
-                    <i class="fas fa-chevron-right fa-lg"></i>
-                  </i>
-                  <span>Más Información</span>
-            </a>
+            <div class="content">
+              {{vid.the_title}}
+              {{vid.subtitle}}
+              <a href="{{programa.link}}" class="button alt">
+                <i class="icon">
+                      <i class="fas fa-chevron-right fa-lg"></i>
+                    </i>
+                    <span>Más Información</span>
+              </a>
+            </div>
           </div>
           <div class="column is-half {{loop.index is divisible by(2) ? 'has-text-left' : 'has-text-right'  }}">
-            <iframe width="400" height="200" src="{{vid.video}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+            <iframe width="400" height="200" src="https://www.youtube.com/embed/{{vid.video_link}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
         {{ loop.last ? '' : '<hr>'}}
@@ -155,11 +159,12 @@
 </section>
 <section class="section bluebg with-divider">
   <div class="container">
-    <div class="columns is-variable-in-desktop is-8 is-vcentered reversed has-small-padding-top has-small-padding-bottom">
-      <div class="column is-half has-text-right-tablet">
-        <h2 class="subtitle is-size-3 is-size-2-fullhd">Programas especializados</h2>
-        <p class="content">Lleva nuestros programa y cursos directamente a tu oficina</p>
-        <a href="{{site.link}}/index.php/programas-especializados" class="button alt">
+    {% for p in programas %}
+    <div class="columns is-variable-in-desktop is-8 is-vcentered {{loop.index is divisible by(2) ? 'reversed' : ''  }} has-small-padding-top has-small-padding-bottom">
+      <div class="column is-half {{loop.index is divisible by(2) ? 'has-text-right-tablet' : ''  }}  content">
+        <h1>{{p.title}}</h1>
+        {{p.get_field('front_page').desc}}
+        <a href="{{p.link}}" class="button alt">
           <i class="icon is-medium">
                 <i class="fas fa-chevron-right fa-lg"></i>
               </i>
@@ -167,25 +172,13 @@
         </a>
       </div>
       <div class="column is-half">
-        <iframe width="560" height="315" src="{{programa.video_home}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{p.get_field('front_page').video_home}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </div>
+    {% if loop.last == false %}
     <hr>
-    <div class="columns is-variable-in-desktop is-8 is-vcentered has-small-padding-top has-small-padding-bottom">
-      <div class="column is-half">
-        <h2 class="subtitle is-size-3 is-size-2-fullhd">Programa para la mujer</h2>
-        <a href="{{site.link}}/index.php/programa-mujer" class="button alt">
-          <i class="icon is-medium">
-                <i class="fas fa-chevron-right fa-lg"></i>
-              </i>
-              <span>Más Información</span>
-        </a>
-      </div>
-      <div class="column is-half">
-        <iframe width="560" height="315" src="{{programa.video_home}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-    </div>
-    <hr class="big">
+    {% endif %}
+    {% endfor %}
   </div>
 </section>
 
