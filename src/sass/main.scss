@@ -116,6 +116,7 @@ section.section{
 			strong {
 				color: white;
 			}
+
 		}
 		&.normal {
 			background-image: none;
@@ -628,6 +629,11 @@ a{
 		padding-top: 0.5rem;
 		@include tablet {
 			padding: 1rem;
+		}
+		a{
+			i {
+				padding-right: 10px
+			}
 		}
 	}
 }

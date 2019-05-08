@@ -32,7 +32,7 @@
         <div class="modal-background"></div>
         <div class="modal-card">
           <div class="modal-card-body">
-            <div class="columns is-variable-in-desktop is-6 ">
+            <div class="columns is-variable-in-desktop is-6 is-multiline">
               {% for subi in justi.sub %}
               <div class="column">
                 <h4 class="title is-4 has-text-centered">{{subi.title}}</h4>
@@ -84,7 +84,6 @@
         
       </div>
     </div>
-    <hr class="big">
   </div>
 </section>
 <section class="section bluebg with-divider" id="publicos">
@@ -129,30 +128,13 @@
              
       </div>
     </div>
-    <hr class="big">
   </div>
 </section>
 <section class="section bluebg" id="lideres">
   <div class="container">
-    <div class="columns is-variable-in-desktop is-8 is-vcentered has-small-padding-bottom is-multiline">
-      <div class="column is-full has-medium-padding-bottom has-text-centered">
-        <h4 class="subtitle is-3">Sé un líder INNOVADOR. Transforme de inmediato su vida y su empresa, con uno de nuestros tres programas.</h4> 
-      </div>
-      <div class="column is-half">
-        <div class="tag is-large">
-          programa
-        </div>
-        <h3 class="subtitle is-size-3 is-size-2-fullhd">{{programa.title}}</h3>
-        <p class="content">{{programa.desc}}</p>
-        <a href="{{programa.link}}" class="button alt">
-          <i class="icon is-medium">
-                <i class="fas fa-chevron-right fa-lg"></i>
-              </i>
-              <span>Más Información</span>
-        </a>
-      </div>
-      <div class="column is-half">
-        <iframe width="560" height="315" src="{{programa.video_home}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div class="columns is-variable-in-desktop is-8 is-vcentered is-multiline">
+      <div class="column is-full has-text-centered">
+        <h4 class="subtitle is-3">{{post.programs_title}}</h4> 
       </div>
     </div>
   </div>
@@ -163,7 +145,8 @@
     <div class="columns is-variable-in-desktop is-8 is-vcentered {{loop.index is divisible by(2) ? 'reversed' : ''  }} has-small-padding-top has-small-padding-bottom">
       <div class="column is-half {{loop.index is divisible by(2) ? 'has-text-right-tablet' : ''  }}  content">
         <h1>{{p.title}}</h1>
-        {{p.get_field('front_page').desc}}
+        {{p.front_desc}}
+        <br>
         <a href="{{p.link}}" class="button alt">
           <i class="icon is-medium">
                 <i class="fas fa-chevron-right fa-lg"></i>
@@ -172,7 +155,7 @@
         </a>
       </div>
       <div class="column is-half">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{p.get_field('front_page').video_home}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{p.front_video_home}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </div>
     {% if loop.last == false %}

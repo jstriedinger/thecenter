@@ -7664,6 +7664,8 @@ a:not(.button):not(.navbar-item):not(.navbar-link) {
     @media screen and (min-width: 769px), print {
       .tabber .contentdiv {
         padding: 1rem; } }
+    .tabber .contentdiv a i {
+      padding-right: 10px; }
 
 .columns.is-variable-in-desktop .columns {
   margin: 0; }

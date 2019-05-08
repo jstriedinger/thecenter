@@ -28,9 +28,11 @@ if ( is_front_page() ) {
 
 	//find all events
 	$args = array (
-	    'post_type'              => 'page'
+	    'post_type'              => 'page',
+	    'orderby' => 'date',
+       	'order' => 'ASC'
 	);
-	$args['meta_query'] =  array(array('key' => '_wp_page_template','compare' => '==','value' => 'templates/programas.php'));
+	$args['meta_query'] =  array(array('key' => '_wp_page_template','compare' => '==','value' => 'templates/lideres.php'));
 	$context['programas'] = Timber::get_posts( $args );
 }
 else{

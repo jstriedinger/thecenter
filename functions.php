@@ -76,6 +76,12 @@ function mailtrap($phpmailer) {
 }
 
 add_action('phpmailer_init', 'mailtrap');
+//Add categories and tags to Pages
+function add_taxonomies_to_pages() {
+ register_taxonomy_for_object_type( 'post_tag', 'page' );
+ register_taxonomy_for_object_type( 'category', 'page' );
+ }
+add_action( 'init', 'add_taxonomies_to_pages' );
 
 function add_to_context( $context ) {
     global $post;

@@ -12,6 +12,29 @@
     <button class="modal-close is-large close-button" data-modal="signupmodal" aria-label="close"></button>
   </div>
 </div>
+{% if post.is_normal %}
+<section class="section bluebg" id="home">
+    <div class="container">
+      <div class="columns has-text-centered is-multiline">
+        <div class="column is-full">
+          <h1 class="title is-2">
+            {{post.title}}
+          </h1>
+        </div>
+      </div>
+    </div>
+</section>
+<section id="main" class="section bluebg">
+  <div class="container">
+    <div class="columns is-variable-in-desktop is-8 is-multiline">
+      <div class="column is-full content">
+        {{post.content}}
+      </div>
+     
+    </div>
+  </div>
+</section>
+{% else %}
 <section class="section" id="tabmain">
   <div class="container is-small">
     <div class="columns is-variable-in-desktop is-6">
@@ -42,8 +65,6 @@
               <div id="tab-{{loop.index}}" class="content-tab content {{loop.first ? 'is-active' : ''}} content" >
                 {% if loop.first %}
                 <h4 class="subtitle is-6">{{post.title}}</h4>
-                <a href="https://getedu.lpages.co/lideres-innovadores/" class="button none"><span class="icon is-large"><i class="far fa-file fa-lg"></i></span><span>Mira el brochure</span></a>
-                <br><br>
                 {% endif %}
                 {{tabi.content}}
               </div>
@@ -72,5 +93,7 @@
     </div>
   </div>
 </section>
+{% endif %}
+{% include 'snippets/contact.twig' %}
     
 {% endblock %}
