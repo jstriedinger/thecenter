@@ -7021,9 +7021,6 @@ section.section#tabmain {
     height: 100%; }
   section.section#tabmain ul li.last {
     flex: 1; }
-  @media screen and (min-width: 769px), print {
-    section.section#tabmain {
-      height: 100vh; } }
 
 @media screen and (min-width: 769px), print {
   section.section#lideres, section.section#especializado, section.section#mujer {

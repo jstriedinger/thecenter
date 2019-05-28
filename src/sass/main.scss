@@ -94,9 +94,6 @@ section.section{
 		ul li.last {
 			flex: 1;
 		}
-		@include tablet {
-			height: 100vh;
-		}
 	}
 	&#lideres,&#especializado,&#mujer{
 		@include tablet {
@@ -105,6 +102,8 @@ section.section{
 		}
 
 	}
+
+	
 	&.bluebg{
 		background: url(../img/fondo.png) center top;
 		background-size: 100% auto;

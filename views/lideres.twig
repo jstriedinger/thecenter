@@ -86,8 +86,8 @@
           </div>
         </div>
         <div class="box blue">
-          <iframe width="300" height="180" src="{{post.video_r}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          <p class="content">{{post.content_r}}</p>
+          <iframe width="300" height="180" src="https://www.youtube.com/embed/{{post.get_field('video_r').video}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <p class="content">{{post.get_field('video_r').content}}</p>
         </div>
       </div>
     </div>

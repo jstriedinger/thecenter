@@ -80,7 +80,7 @@
   <div class="container has-medium-padding-top">
     <div class="columns is-centered">
       <div class="column is-two-thirds has-text-centered" style="border: 3px solid white">
-          <a href="{{programa.link}}" class="subtitle is-4">Transfórmese en Líder INNOVADOR, en 4 días. Clic AQUÍ</a>
+          <a href="{{post.get_field('cta').link}}" class="subtitle is-4">{{post.get_field('cta').txt}}</a>
         
       </div>
     </div>
@@ -101,7 +101,7 @@
             <div class="content">
               {{vid.the_title}}
               {{vid.subtitle}}
-              <a href="{{programa.link}}" class="button alt">
+              <a href="{{post.get_field('cta').link}}" class="button alt">
                 <i class="icon">
                       <i class="fas fa-chevron-right fa-lg"></i>
                     </i>
@@ -121,7 +121,7 @@
   <div class="container has-medium-padding-top">
     <div class="columns is-centered is-multiline">
       <div class="column is-two-thirds has-text-centered" style="border: 3px solid white">
-          <a href="{{programa.link}}" class="subtitle is-4">Transfórmese en Líder INNOVADOR, en 4 días. Clic AQUÍ</a>
+          <a href="{{post.get_field('cta').link}}" class="subtitle is-4">{{post.get_field('cta').txt}}</a>
         
       </div>
       <div class="column is-full has-text-centered has-medium-padding-top">
