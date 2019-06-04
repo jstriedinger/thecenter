@@ -7,9 +7,9 @@
     <div class="modal-card-body has-text-centered">
       <div id="video-player" data-video="{{post.video_home}}"></div>
       <br><br>
-      <h3 class="subtitle is-5">A través del tiempo hemos trabajado con las siguientes instituciones</h3>
+      <h3 class="subtitle is-5">{{post.get_field("welcome").txt}}</h3>
       <div style="background:white;padding:0.8rem">
-        <img src="{{theme.link}}/dist/img/aliados.png" alt="aliados">
+        <img src="{{post.get_field("welcome").image}}" alt="aliados">
       </div>
     </div>
     <button class="modal-close is-large close-button" data-modal="videomodal" aria-label="close"></button>
@@ -61,7 +61,7 @@
             {{justi.title}}
             {{justi.desc}}
           </div>
-          {% if justi.page is not empty %}
+          {% if justi.page is not empty and justi.sub is not empty %}
           <div class="card-footer">
             <a href="{{justi.page}}" class="card-footer-item button alt {{ justi.sub is not empty ? 'opener' : ''}}" {{ justi.sub is not empty ? 'data-modal="justi_' ~ loop.index ~ '_modal" ' : ''}}>
               <i class="icon">
